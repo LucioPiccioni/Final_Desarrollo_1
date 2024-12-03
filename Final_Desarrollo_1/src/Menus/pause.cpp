@@ -1,10 +1,11 @@
 #include "pause.h"
 
-#include "Engine/sounds.h"
-#include "Engine/game_data.h"
-#include "GamePlay/gameplay.h"
-#include "Menus/button.h"
-#include "Gameplay/gameplay2p.h"
+#include "Program/program_Data.h"
+#include "Program/Utilities/button.h"
+
+#include "Gameplay/gameplay.h"
+
+#include "Res/sounds.h"
 
 namespace PAUSE
 {
@@ -12,15 +13,15 @@ namespace PAUSE
 	Vector2 mouse;
 	BUTTON::Button buttons[buttonCount] = {};
 
-	void initButtons()
+	void init()
 	{
-		float startX = (SCREEN_WIDTH - BUTTON::buttonWidth) / 2;
-		float startY = SCREEN_HEIGHT - (BUTTON::buttonHeight * buttonCount + BUTTON::buttonSpacing * (buttonCount - 1));
+		float startX = (PROGRAM_DATA::screenWidth - BUTTON::width) / 2;
+		float startY = (PROGRAM_DATA::screenHeight - BUTTON::height) - (BUTTON::height * buttonCount + BUTTON::spacing * (buttonCount - 1));
 
 
-		buttons[0].option = GAME_STATES::Gamestate::ONE_PLAYER_MODE;
-		buttons[1].option = GAME_STATES::Gamestate::MAIN_MENU;
-		buttons[2].option = GAME_STATES::Gamestate::WANT_TO_EXIT;
+		buttons[0].option = PROGRAM_MANAGER::Program_State::GAMEPLAY;
+		buttons[1].option = PROGRAM_MANAGER::Program_State::MAIN_MENU;
+		buttons[2].option = PROGRAM_MANAGER::Program_State::WANT_TO_EXIT;
 
 		buttons[0].text = "RESUME";
 		buttons[1].text = "MENU";
@@ -30,18 +31,18 @@ namespace PAUSE
 
 		for (int i = 0; i < buttonCount; i++)
 		{
-			buttons[i].rect = { startX, startY + i * (BUTTON::buttonHeight + BUTTON::buttonSpacing), BUTTON::buttonWidth, BUTTON::buttonHeight };
+			buttons[i].rect = { startX, startY + i * (BUTTON::height + BUTTON::spacing), BUTTON::width, BUTTON::height };
 			buttons[i].outline = outline;
 		}
 
 	}
 
-	void update(GAME_STATES::ProgramState& gameState)
+	void update(PROGRAM_MANAGER::State_Manager& state_Manager)
 	{
 		mouse = GetMousePosition();
 
 		if (IsKeyPressed(KEY_ESCAPE))
-			gameState.actual = gameState.previusGameMode;
+			state_Manager.actual = state_Manager.previus;
 
 		for (int i = 0; i < buttonCount; i++)
 		{
@@ -56,42 +57,42 @@ namespace PAUSE
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 				{
-					StopSound(SOUNDS::gameSounds.button);
-					PlaySound(SOUNDS::gameSounds.button);
-					gameState.actual = buttons[i].option;
+					StopSound(SOUND::gameSounds.button);
+					PlaySound(SOUND::gameSounds.button);
+					state_Manager.actual = buttons[i].option;
 				}
 			}
 			else
 			{
-				buttons[i].color = { 255, 182, 193, 255 };
+				buttons[i].color = BUTTON::button_Default_Color;
 			}
 		}
 
-		if (gameState.actual == GAME_STATES::Gamestate::MAIN_MENU)
+		if (state_Manager.actual == PROGRAM_MANAGER::Program_State::MAIN_MENU)
 		{
-			if (gameState.previusGameMode == GAME_STATES::Gamestate::ONE_PLAYER_MODE)
-				GAMEPLAY_1P::initializeGame();
-			else
-				GAMEPLAY_2P::initializeGame();
+			GAMEPLAY::init();
+		}
+		else if (state_Manager.actual == PROGRAM_MANAGER::Program_State::WANT_TO_EXIT)
+		{
+			state_Manager.previus = PROGRAM_MANAGER::Program_State::PAUSE;
 		}
 	}
 
-	void draw(Font font, GAME_STATES::Gamestate previusGameMode)
+	void draw(Font font)
 	{
+		GAMEPLAY::draw(font);
+
 		Vector2 titlePos =
 		{
-			(SCREEN_WIDTH) / 2 - MeasureTextEx(font, "Pause", BUTTON::titlesFontSize, 2).x / 2,
-			(SCREEN_HEIGHT) / 5
+			(PROGRAM_DATA::screenWidth) / 2 - MeasureTextEx(font, "Pause", BUTTON::titlesFontSize, 2).x / 2,
+			(PROGRAM_DATA::screenHeight) / 5
 		};
 
 		Color pastelPurple = { 214, 196, 224, 255 };
 
-		if (previusGameMode == GAME_STATES::Gamestate::ONE_PLAYER_MODE)
-			GAMEPLAY_1P::drawGame();
-		else
-			GAMEPLAY_2P::drawGame();
-
-		DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, Color{ 0, 0, 0, 125 });
+		DrawRectangle(0, 0,
+			static_cast<int>(PROGRAM_DATA::screenWidth),
+			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
 
 		DrawTextEx(font, "Pause", titlePos, BUTTON::titlesFontSize, 2, pastelPurple);
 

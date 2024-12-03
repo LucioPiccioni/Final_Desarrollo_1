@@ -43,6 +43,12 @@
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{6ba95bdc-d07e-44cf-9712-05377cd1890b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Menus">
+      <UniqueIdentifier>{7b9c5e28-5a8a-4688-8f93-c07c85ff9a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menus">
+      <UniqueIdentifier>{6e5c5b9f-d487-49be-a9d6-9b2f0d397801}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -69,6 +75,12 @@
     <ClCompile Include="src\Enities\player.cpp">
       <Filter>Resource Files\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="src\Menus\main_menu.cpp">
+      <Filter>Resource Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Menus\pause.cpp">
+      <Filter>Resource Files\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\program_Data.h">
@@ -91,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="src\Enities\platform.h">
       <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menus\main_menu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menus\pause.h">
+      <Filter>Header Files\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
