@@ -1,5 +1,7 @@
 #include "button.h"
 
+#include "raylib.h"
+
 #include <string>
 
 namespace BUTTON

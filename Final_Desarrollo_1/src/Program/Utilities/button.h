@@ -4,25 +4,28 @@
 
 #include "raylib.h"
 
-#include "Engine/state_machine.cpp"
+#include "Program/program_Manager.h"
 
 namespace BUTTON
 {
+	const Color button_Default_Color = { 255, 182, 193, 255 };
+	const Color button_Outline_Color = { 1, 1, 1, 255 };
+
 	struct Button
 	{
 		std::string text;
 
 		Rectangle rect = { 0,0,0,0 };
 
-		GAME_STATES::Gamestate option = GAME_STATES::Gamestate::NONE;
+		PROGRAM_MANAGER::Program_State option = PROGRAM_MANAGER::Program_State::NONE;
 
-		Color color = { 255, 182, 193, 255 };
-		Color outline = { 1, 1, 1, 255 };
+		Color color = button_Default_Color;
+		Color outline = button_Outline_Color;
 	};
 
-	const float buttonWidth = 200;
-	const float buttonHeight = 60;
-	const float buttonSpacing = 20;
+	const float width = 200;
+	const float height = 60;
+	const float spacing = 20;
 
 	const float titlesFontSize = 100;
 	const float textFontSize = 40;
