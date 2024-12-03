@@ -32,6 +32,19 @@ namespace SPRITE
 		UnloadTexture(sprites.space);
 	}
 
+	void update_Paralax_Pos(float delta_Time)
+	{
+		float skySpeed = (PLATFORM::speed_y * 0.05f) * delta_Time;
+
+		delta_Time = delta_Time + 2;
+
+		if (skySpeed > 0)
+			SPRITE::spritesMovement.space -= skySpeed;
+
+		if (SPRITE::spritesMovement.space > PROGRAM_DATA::screenHeight)
+			SPRITE::spritesMovement.space = 0;
+	}
+
 	void draw_Paralax()
 	{
 		Vector2 origin = { 0.0f, 0.0f };
