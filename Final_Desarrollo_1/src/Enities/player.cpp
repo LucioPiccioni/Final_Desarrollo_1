@@ -104,6 +104,11 @@ namespace PLAYER
 		}
 	}
 
+	void fix_Vertical_Speed_On_Platform()
+	{
+		player.speed.y = PLATFORM::speed_y;
+	}
+
 	void update_Horizontal_Pos_On_Platform(float delta_Time)
 	{
 		delta_Time = delta_Time;
