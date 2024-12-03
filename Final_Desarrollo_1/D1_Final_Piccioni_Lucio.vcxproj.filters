@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Gameplay">
       <UniqueIdentifier>{10a090a2-a3ba-43eb-aea3-091305a579d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Entities">
+      <UniqueIdentifier>{1f6f0b3e-4d13-48ea-b900-19d121a45e67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{6ba95bdc-d07e-44cf-9712-05377cd1890b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -57,6 +63,12 @@
     <ClCompile Include="src\Gameplay\gameplay.cpp">
       <Filter>Resource Files\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\Enities\platform.cpp">
+      <Filter>Resource Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enities\player.cpp">
+      <Filter>Resource Files\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\program_Data.h">
@@ -73,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="src\Gameplay\gameplay.h">
       <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enities\player.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enities\platform.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

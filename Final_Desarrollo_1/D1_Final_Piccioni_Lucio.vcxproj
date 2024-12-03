@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Enities\platform.cpp" />
+    <ClCompile Include="src\Enities\player.cpp" />
     <ClCompile Include="src\Gameplay\gameplay.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Program\program.cpp" />
@@ -27,6 +29,8 @@
     <ClCompile Include="src\Program\Utilities\button.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Enities\platform.h" />
+    <ClInclude Include="src\Enities\player.h" />
     <ClInclude Include="src\Gameplay\gameplay.h" />
     <ClInclude Include="src\Program\program.h" />
     <ClInclude Include="src\Program\program_Data.h" />
