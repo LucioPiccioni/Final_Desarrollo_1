@@ -11,6 +11,37 @@ namespace PLAYER
 
 	float actual_Gravity = min_Gravity;
 
+	void update(float delta_Time)
+	{
+		update_Movement(delta_Time);
+	}
+
+	void update_Movement(float delta_Time)
+	{
+		movement_Input(delta_Time);
+
+		apply_Gravity(delta_Time);
+
+		apply_Friction(delta_Time);
+
+		animate(delta_Time);
+
+		update_Horizontal_Pos_On_Platform(delta_Time);
+
+		limit_Horizontal_Speed();
+
+		player.pos.y += player.speed.y * delta_Time;
+		player.pos.x += player.speed.x * delta_Time;
+
+		if (player.speed.x > movement_Speed) player.speed.x = movement_Speed;
+		if (player.speed.x < -movement_Speed) player.speed.x = -movement_Speed;
+
+		if (player.pos.x > PROGRAM_DATA::screenWidth) player.pos.x = 0;
+		if (player.pos.x + player.width < 0) player.pos.x = PROGRAM_DATA::screenWidth;
+
+		if (player.speed.x > -1.0f && player.speed.x < 1.0f && !player.input_Pressed) player.speed.x = 0;
+	}
+
 	void animate(float deltaTime)
 	{
 		player.framesCounter += deltaTime;
