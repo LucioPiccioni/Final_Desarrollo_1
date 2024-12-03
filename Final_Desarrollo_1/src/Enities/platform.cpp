@@ -55,6 +55,41 @@ namespace PLATFORM
 		return newPlatform;
 	}
 
+	void update(Platform& platform, float delta_Time)
+	{
+		move(platform, delta_Time);
+		changeDirectionX(platform);
+	}
 
+	void move(Platform& platform, float delta_Time)
+	{
+		platform.rect_Pos.y += speed_y * delta_Time;
+
+		if (platform.moves_In_x)
+		{
+			if (platform.left_Movement)
+			{
+				platform.rect_Pos.x -= platform.speed.x * delta_Time;
+			}
+			else if (platform.right_Movement)
+			{
+				platform.rect_Pos.x += platform.speed.x * delta_Time;
+			}
+		}
+	}
+
+	void changeDirectionX(Platform& platform)
+	{
+		if (platform.rect_Pos.x + platform.rect_Pos.width > PROGRAM_DATA::screenWidth)
+		{
+			platform.right_Movement = false;
+			platform.left_Movement = true;
+		}
+		else if (platform.rect_Pos.x < 0)
+		{
+			platform.left_Movement = false;
+			platform.right_Movement = true;
+		}
+	}
 
 }
