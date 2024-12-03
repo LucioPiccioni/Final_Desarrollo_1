@@ -85,9 +85,9 @@ namespace GAMEPLAY
 		}
 	}
 
-	bool did_Player_Died()
+	bool should_Increase_Difficulty()
 	{
-		return (PLAYER::player.pos.y > PROGRAM_DATA::screenHeight);
+		return (PLAYER::player.points % 5 == 0 && PLAYER::player.points != 0);
 	}
 
 	void If_On_Platform(float delta_Time)
@@ -119,6 +119,11 @@ namespace GAMEPLAY
 				PLAYER::player.platform_Standing = nullptr;
 			}
 		}
+	}
+
+	bool did_Player_Died()
+	{
+		return (PLAYER::player.pos.y > PROGRAM_DATA::screenHeight);
 	}
 
 	void deactivate_Platform()
