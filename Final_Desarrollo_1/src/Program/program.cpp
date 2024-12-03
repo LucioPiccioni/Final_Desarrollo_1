@@ -57,4 +57,110 @@ namespace PROGRAM
 		CREDITS_MENU::initializeCreditsMenu();
 		CONFIRM_EXIT::initButtons();
 	}
+
+	void uninit()
+	{
+		SOUND_TRACKS::unload();
+		SOUND::unload();
+		SPRITE::unload();
+		CloseAudioDevice();
+		UnloadFont(font);
+	}
+
+	void update()
+	{
+		SOUND_TRACKS::MusicControl(state_manager);
+		SOUND::volumeManager();
+
+		switch (state_manager.actual)
+		{
+		case PROGRAM_MANAGER::Program_State::MAIN_MENU:
+
+			MAIN_MENU::update(state_manager, GetFrameTime());
+			break;
+
+		case PROGRAM_MANAGER::Program_State::GAMEPLAY:
+
+			GAMEPLAY::update(state_manager);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::PAUSE:
+
+			PAUSE::update(state_manager);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::GAME_OVER:
+
+			GAME_OVER::update(state_manager);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::RULES:
+
+			RULES::update(state_manager);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::CREDITS:
+
+			CREDITS::update(state_manager.actual);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::WANT_TO_EXIT:
+
+			CONFIRM_EXIT::update(state_manager);
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	void draw()
+	{
+		BeginDrawing();
+
+		ClearBackground(BLACK);
+
+		switch (state_manager.actual)
+		{
+		case PROGRAM_MANAGER::Program_State::MAIN_MENU:
+
+			MAIN_MENU::drawMenu(font);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::GAMEPLAY:
+
+			GAMEPLAY::draw(font);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::PAUSE:
+
+			PAUSE::draw(font);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::GAME_OVER:
+
+			GAME_OVER::draw(font);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::RULES:
+
+			RULES_MENU::drawRulesMenu(font);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::CREDITS:
+
+			CREDITS_MENU::drawCreditsMenu(font);
+			break;
+
+		case PROGRAM_MANAGER::Program_State::WANT_TO_EXIT:
+
+			CONFIRM_EXIT::draw(font);
+			break;
+
+		default:
+			break;
+		}
+
+		EndDrawing();
+	}
 }
