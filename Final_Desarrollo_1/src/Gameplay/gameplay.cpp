@@ -52,4 +52,36 @@ namespace GAMEPLAY
 		PLATFORM::speed_y = PLATFORM::min_Speed.y;
 		PLATFORM::actual_length = PLATFORM::max_length;
 	}
+
+	void update(PROGRAM_MANAGER::State_Manager& state_Manager)
+	{
+		float delta_Time = GetFrameTime();
+
+		SPRITE::update_Paralax_Pos(delta_Time);
+
+		if (IsKeyPressed(KEY_ESCAPE))
+		{
+			state_Manager.previus = PROGRAM_MANAGER::Program_State::GAMEPLAY;
+			state_Manager.actual = PROGRAM_MANAGER::Program_State::PAUSE;
+		}
+
+		If_On_Platform(delta_Time);
+
+		PLAYER::update(delta_Time);
+
+		for (int i = 0; i < maxPlatform; i++)
+		{
+			PLATFORM::update(platform[i], delta_Time);
+		}
+
+		activate_New_Platform();
+
+		deactivate_Platform();
+
+		if (did_Player_Died())
+		{
+			init();
+			state_Manager.actual = PROGRAM_MANAGER::Program_State::GAME_OVER;
+		}
+	}
 }
