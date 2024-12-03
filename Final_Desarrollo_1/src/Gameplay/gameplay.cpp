@@ -84,4 +84,62 @@ namespace GAMEPLAY
 			state_Manager.actual = PROGRAM_MANAGER::Program_State::GAME_OVER;
 		}
 	}
+
+	void If_On_Platform(float delta_Time)
+	{
+		delta_Time = delta_Time;
+
+		for (int i = 0; i < maxPlatform; i++)
+		{
+			if (PLAYER::player.speed.y >= 0 && PLAYER::Is_on_Platform(platform[i].rect_Pos))
+			{
+				PLAYER::player.on_Floor = true;
+
+				if (!PLAYER::player.platform_Standing)
+				{
+					PLAYER::player.platform_Standing = &platform[i];
+					PLAYER::player.pos.y = PLAYER::player.platform_Standing->rect_Pos.y - PLAYER::player.height + 0.5f;
+				}
+
+				PLAYER::fix_Vertical_Speed_On_Platform();
+
+				update_Player_Points(platform[i]);
+
+
+				break;
+			}
+			else
+			{
+				PLAYER::player.on_Floor = false;
+				PLAYER::player.platform_Standing = nullptr;
+			}
+		}
+	}
+
+	void update_Player_Points(PLATFORM::Platform& plat)
+	{
+		if (!plat.counted_Point)
+		{
+			PLAYER::player.points++;
+			plat.counted_Point = true;
+
+			if (should_Increase_Difficulty())
+			{
+				PLATFORM::speed_y *= diculty_Multiplier;
+
+				PLATFORM::actual_length *= (0.95f);
+
+				PLAYER::actual_Gravity *= diculty_Multiplier;
+
+				if (PLATFORM::speed_y > PLATFORM::speed_y)
+					PLATFORM::speed_y = PLATFORM::max_Speed.y;
+
+				if (PLAYER::actual_Gravity > PLAYER::max_Gravity)
+					PLAYER::actual_Gravity = PLAYER::max_Gravity;
+
+				if (PLATFORM::actual_length < PLATFORM::min_length)
+					PLATFORM::actual_length = PLATFORM::min_length;
+			}
+		}
+	}
 }
