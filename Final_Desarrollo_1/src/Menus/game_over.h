@@ -1,13 +1,14 @@
 #pragma once
 
-#include "Engine/state_machine.h"
 #include "raylib.h"
+
+#include "Program/program_Manager.h"
 
 namespace GAME_OVER
 {
-	void initButtons();
+	void init();
 
-	void update(GAME_STATES::ProgramState& gameState);
+	void update(PROGRAM_MANAGER::State_Manager& state_Manager);
 
 	void draw(Font font);
 }

@@ -1,12 +1,12 @@
 #include "game_over.h"
 
-#include "gameplay.h"
-#include "gameplay2p.h"
-#include "obstacle.h"
+#include "Program/program_Data.h"
+#include "Program/Utilities/button.h"
 
-#include "sounds.h"
-#include "button.h"
-#include "game_data.h"
+#include "Gameplay/gameplay.h"
+
+#include "Res/sounds.h"
+#include "Res/sprites.h"
 
 namespace GAME_OVER
 {
@@ -14,30 +14,30 @@ namespace GAME_OVER
 	Vector2 mouse;
 	BUTTON::Button buttons[maxButtons] = {};
 
-	void initButtons()
+	void init()
 	{
-		float startX = (static_cast<float>(SCREEN_WIDTH) - BUTTON::buttonWidth) / 2;
-		float startY = ((static_cast<float>(SCREEN_HEIGHT) - SCREEN_HEIGHT / 5) - (BUTTON::buttonHeight * maxButtons + BUTTON::buttonSpacing * (maxButtons - 1)));
+		float startX = (static_cast<float>(PROGRAM_DATA::screenWidth) - BUTTON::width) / 2;
+		float startY = ((PROGRAM_DATA::screenHeight - PROGRAM_DATA::screenHeight / 5) - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1)));
 
 		for (int i = 0; i < maxButtons; i++)
 		{
-			buttons[i].rect = { startX, startY + i * (BUTTON::buttonHeight + BUTTON::buttonSpacing), BUTTON::buttonWidth, BUTTON::buttonHeight };
+			buttons[i].rect = { startX, startY + i * (BUTTON::height + BUTTON::spacing), BUTTON::width, BUTTON::height };
 		}
 
-		buttons[0].option = GAME_STATES::Gamestate::REPLAY;
-		buttons[1].option = GAME_STATES::Gamestate::MAIN_MENU;
-		buttons[2].option = GAME_STATES::Gamestate::WANT_TO_EXIT;
+		buttons[0].option = PROGRAM_MANAGER::Program_State::REPLAY;
+		buttons[1].option = PROGRAM_MANAGER::Program_State::MAIN_MENU;
+		buttons[2].option = PROGRAM_MANAGER::Program_State::WANT_TO_EXIT;
 
 		buttons[0].text = "REPLAY";
 		buttons[1].text = "MENU";
 		buttons[2].text = "EXIT";
 	}
 
-	void update(GAME_STATES::ProgramState& gameState)
+	void update(PROGRAM_MANAGER::State_Manager& state_Manager)
 	{
-		float deltaTime = GetFrameTime();
-
 		mouse = GetMousePosition();
+
+		SPRITE::update_Paralax_Pos(GetFrameTime());
 
 		for (int i = 0; i < maxButtons; i++)
 		{
@@ -52,51 +52,42 @@ namespace GAME_OVER
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 				{
-					StopSound(SOUNDS::gameSounds.button);
-					PlaySound(SOUNDS::gameSounds.button);
-					gameState.actual = buttons[i].option;
+					StopSound(SOUND::gameSounds.button);
+					PlaySound(SOUND::gameSounds.button);
+					state_Manager.actual = buttons[i].option;
 				}
 			}
 			else
 			{
-				buttons[i].color = { 255, 182, 193, 255 };
+				buttons[i].color = BUTTON::button_Default_Color;
 			}
 		}
 
-
-		if (OBSTACLE::actualSpeed > 0)
+		if (state_Manager.actual == PROGRAM_MANAGER::Program_State::REPLAY)
 		{
-			SPRITES::updateTexturesPos(deltaTime);
-			OBSTACLE::actualSpeed -= 20 * deltaTime;
+			GAMEPLAY::init();
+			state_Manager.actual = PROGRAM_MANAGER::Program_State::GAMEPLAY;
 		}
-		else if (OBSTACLE::actualSpeed < 0)
-			OBSTACLE::actualSpeed = 0;
-
-
-		if (gameState.actual == GAME_STATES::Gamestate::REPLAY)
+		else if (state_Manager.actual == PROGRAM_MANAGER::Program_State::MAIN_MENU)
 		{
-			if (gameState.previusGameMode == GAME_STATES::Gamestate::ONE_PLAYER_MODE)
-				GAMEPLAY_1P::initializeGame();
-			else
-				GAMEPLAY_2P::initializeGame();
-
-			gameState.actual = gameState.previusGameMode;
+			GAMEPLAY::init();
 		}
-		else if (gameState.actual == GAME_STATES::Gamestate::MAIN_MENU)
+		else if (state_Manager.actual == PROGRAM_MANAGER::Program_State::WANT_TO_EXIT)
 		{
-			GAMEPLAY_1P::initializeGame();
-			GAMEPLAY_2P::initializeGame();
+			state_Manager.previus = PROGRAM_MANAGER::Program_State::GAME_OVER;
 		}
 	}
 
 	void draw(Font font)
 	{
 		Vector2 gameOverTextSize = MeasureTextEx(font, "GAME OVER", BUTTON::titlesFontSize, 0);
-		Vector2 gameOverPos = { (static_cast<float>(SCREEN_WIDTH) - gameOverTextSize.x) * 0.5f, gameOverTextSize.y };
+		Vector2 gameOverPos = { (static_cast<float>(PROGRAM_DATA::screenWidth) - gameOverTextSize.x) * 0.5f, gameOverTextSize.y };
 
-		SPRITES::drawBackgroundAssets();
+		SPRITE::draw_Paralax();
 
-		DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, Color{ 0, 0, 0, 125 });
+		DrawRectangle(0, 0, 
+			static_cast<int>(PROGRAM_DATA::screenWidth), 
+			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
 
 		DrawTextEx(font, "GAME OVER", gameOverPos, BUTTON::titlesFontSize, 0, RED);
 

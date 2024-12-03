@@ -84,6 +84,9 @@
     <ClCompile Include="src\Menus\rules.cpp">
       <Filter>Resource Files\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Menus\game_over.cpp">
+      <Filter>Resource Files\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\program_Data.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files\Menus</Filter>
     </ClInclude>
     <ClInclude Include="src\Menus\rules.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menus\game_over.h">
       <Filter>Header Files\Menus</Filter>
     </ClInclude>
   </ItemGroup>
