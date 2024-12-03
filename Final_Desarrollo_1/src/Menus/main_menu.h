@@ -2,16 +2,16 @@
 
 #include "raylib.h"
 
-#include "Engine/state_machine.h"
+#include "program_Manager.h"
 
 namespace MAIN_MENU
 {
 	void initializeMenu();
 
-	void updateMenu(GAME_STATES::ProgramState& gameState);
+	void update(PROGRAM_MANAGER::State_Manager& state_manager, float delta_Time);
 
-	void initializeButtons();
+	void init();
 
-	void drawMenu(Font font);
+	void draw(Font font);
 }
 

@@ -1,31 +1,36 @@
 #include "main_menu.h"
 
-#include "Engine/sounds.h"
-#include "Engine/music.h"
+#include "sounds.h"
+#include "music.h"
 #include "Menus/button.h"
-#include "Engine/game_data.h"
-#include "Gameplay/sprites.h"
+#include "program_Data.h"
+#include "sprites.h"
 
 namespace MAIN_MENU
 {
-	static const int maxButtons = 5;
+	static const int maxButtons = 4;
 	static BUTTON::Button buttons[maxButtons];
-	Texture2D gamesTitle;
 
 	void initializeMenu()
 	{
-		SPRITES::spritesMovement = { 0,0,0,0 };
-		initializeButtons();
+		init();
 	}
 
-	void updateMenu(GAME_STATES::ProgramState& gameState)
+	void update(PROGRAM_MANAGER::State_Manager& state_manager, float delta_Time)
 	{
 		Vector2 mouse = GetMousePosition();
 
-		if ((IsKeyPressed(KEY_DOWN) || IsKeyPressed(KEY_LEFT)) && SOUND_TRACKS::volume > 0)
-			SOUND_TRACKS::volume -= 0.01f;
-		else if ((IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_RIGHT)) && SOUND_TRACKS::volume < 1)
-			SOUND_TRACKS::volume += 0.01f;
+		SPRITE::update_Paralax_Pos(delta_Time);
+
+		if ((IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_LEFT)) && SOUND_TRACKS::volume > 0)
+			SOUND_TRACKS::volume -= 0.1f * delta_Time;
+		else if ((IsKeyDown(KEY_UP) || IsKeyDown(KEY_RIGHT)) && SOUND_TRACKS::volume < 1)
+			SOUND_TRACKS::volume += 0.1f * delta_Time;
+
+		if (SOUND_TRACKS::volume > 1)
+			SOUND_TRACKS::volume = 1;
+		else if (SOUND_TRACKS::volume < 0)
+			SOUND_TRACKS::volume = 0;
 
 		for (int i = 0; i < maxButtons; i++)
 		{
@@ -40,31 +45,37 @@ namespace MAIN_MENU
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 				{
-					StopSound(SOUNDS::gameSounds.button);
-					PlaySound(SOUNDS::gameSounds.button);
-					gameState.actual = buttons[i].option;
+					StopSound(SOUND::gameSounds.button);
+					PlaySound(SOUND::gameSounds.button);
+					state_manager.actual = buttons[i].option;
 				}
 			}
 			else
 			{
-				buttons[i].color = { 255, 182, 193, 255 };
+				buttons[i].color = BUTTON::button_Default_Color;
 			}
 		}
 
-		SPRITES::updateTexturesPos(GetFrameTime());
+		if (state_manager.actual == PROGRAM_MANAGER::Program_State::WANT_TO_EXIT)
+		{
+			state_manager.previus = PROGRAM_MANAGER::Program_State::MAIN_MENU;
+		}
+
+		SPRITE::update_Paralax_Pos(GetFrameTime());
 	}
 
-	void drawMenu(Font font)
+	void draw(Font font)
 	{
-		SPRITES::drawBackgroundAssets();
+		SPRITE::draw_Paralax();
 
-		DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, Color{ 0, 0, 0, 125 });
+		DrawRectangle(0, 0, static_cast<int>(PROGRAM_DATA::screenWidth),
+			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
 
 		DrawText("v0.5", 0, 0, 20, WHITE);
 
 		DrawTextPro(font,
 			"The Spark",
-			Vector2{ (SCREEN_WIDTH - MeasureTextEx(font, "The Spark", BUTTON::titlesFontSize, 0).x) * 0.5f,
+			Vector2{ (PROGRAM_DATA::screenWidth - MeasureTextEx(font, "The Spark", BUTTON::titlesFontSize, 0).x) * 0.5f,
 					 MeasureTextEx(font, "The Spark", BUTTON::titlesFontSize, 0).y * 0.5f },
 			Vector2{ 0, 0 },
 			0, BUTTON::titlesFontSize,
@@ -76,36 +87,35 @@ namespace MAIN_MENU
 			BUTTON::drawButton(buttons[i], font);
 		}
 
-		DrawText("Hold Left/Down to lower volume,", 10, SCREEN_HEIGHT - 60, 14, WHITE);
-		DrawText("Right/Up to increase volume", 10, SCREEN_HEIGHT - 40, 14, WHITE);
+		DrawText("Hold Left/Down to lower volume,", 10, static_cast<int>(PROGRAM_DATA::screenHeight) - 60, 14, WHITE);
+		DrawText("Right/Up to increase volume", 10, static_cast<int>(PROGRAM_DATA::screenHeight) - 40, 14, WHITE);
 
 		int volumePercentage = static_cast<int>(SOUND_TRACKS::volume * 100);
-		DrawText(("Volume: " + std::to_string(volumePercentage) + "%").c_str(), 10, SCREEN_HEIGHT - 20, 14, WHITE);
+		DrawText(("Volume: " + std::to_string(volumePercentage) + "%").c_str(), 10,
+			static_cast<int>(PROGRAM_DATA::screenHeight) - 20, 14, WHITE);
 	}
 
 
-	void initializeButtons()
+	void init()
 	{
-		float startX = (SCREEN_WIDTH - BUTTON::buttonWidth) / 2;
-		float startY = SCREEN_HEIGHT - (BUTTON::buttonHeight * maxButtons + BUTTON::buttonSpacing * (maxButtons - 1));
+		float startX = (PROGRAM_DATA::screenWidth - BUTTON::width) / 2;
+		float startY = (PROGRAM_DATA::screenHeight - BUTTON::height) - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1));
 
 		for (int i = 0; i < maxButtons; i++)
 		{
-			buttons[i].rect = { startX, startY + i * (BUTTON::buttonHeight + BUTTON::buttonSpacing), BUTTON::buttonWidth, BUTTON::buttonHeight };
+			buttons[i].rect = { startX, startY + i * (BUTTON::height + BUTTON::spacing), BUTTON::width, BUTTON::height };
 			buttons[i].color = BLACK;
 		}
 
-		buttons[0].option = GAME_STATES::Gamestate::ONE_PLAYER_MODE;
-		buttons[1].option = GAME_STATES::Gamestate::TWO_PLAYER_MODE;
-		buttons[2].option = GAME_STATES::Gamestate::RULES;
-		buttons[3].option = GAME_STATES::Gamestate::CREDITS;
-		buttons[4].option = GAME_STATES::Gamestate::WANT_TO_EXIT;
+		buttons[0].option = PROGRAM_MANAGER::Program_State::GAMEPLAY;
+		buttons[1].option = PROGRAM_MANAGER::Program_State::RULES;
+		buttons[2].option = PROGRAM_MANAGER::Program_State::CREDITS;
+		buttons[3].option = PROGRAM_MANAGER::Program_State::WANT_TO_EXIT;
 
-		buttons[0].text = "Solo MODE";
-		buttons[1].text = "Coop MODE";
-		buttons[2].text = "RULES";
-		buttons[3].text = "CREDITS";
-		buttons[4].text = "EXIT";
+		buttons[0].text = "GAMEPLAY";
+		buttons[1].text = "RULES";
+		buttons[2].text = "CREDITS";
+		buttons[3].text = "EXIT";
 
 	}
 
