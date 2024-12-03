@@ -24,6 +24,15 @@ namespace PROGRAM
 	PROGRAM_MANAGER::State_Manager state_manager;
 	Font font;
 
+	void run()
+	{
+		init();
+
+		loop();
+
+		uninit();
+	}
+
 	void init()
 	{
 		PROGRAM_DATA::screenWidth = 800;
@@ -56,6 +65,17 @@ namespace PROGRAM
 		RULES_MENU::initializeRulesMenu();
 		CREDITS_MENU::initializeCreditsMenu();
 		CONFIRM_EXIT::initButtons();
+	}
+
+	void loop()
+	{
+		while (!WindowShouldClose() &&
+			state_manager.actual != PROGRAM_MANAGER::Program_State::CONFIRM_EXIT)
+		{
+			update();
+
+			draw();
+		}
 	}
 
 	void uninit()
