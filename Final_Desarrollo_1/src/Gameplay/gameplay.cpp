@@ -126,6 +126,21 @@ namespace GAMEPLAY
 		return (PLAYER::player.pos.y > PROGRAM_DATA::screenHeight);
 	}
 
+	void activate_New_Platform()
+	{
+		if (platform[lastActiveIndex].active && platform[lastActiveIndex].rect_Pos.y > PROGRAM_DATA::screenHeight * 0.5f)
+		{
+			int nextIndex = (lastActiveIndex + 1) % maxPlatform;
+
+			if (!platform[nextIndex].active)
+			{
+				platform[nextIndex] = PLATFORM::spawner();
+
+				lastActiveIndex = nextIndex;
+			}
+		}
+	}
+
 	void deactivate_Platform()
 	{
 		for (int i = 0; i < maxPlatform; i++)
