@@ -154,6 +154,22 @@ namespace GAMEPLAY
 		}
 	}
 
+	void draw(Font font)
+	{
+		SPRITE::draw_Paralax();
+
+		PLAYER::draw();
+
+		for (int i = 0; i < maxPlatform; i++)
+		{
+			if (platform[i].active)
+				PLATFORM::draw(platform[i].rect_Pos);
+		}
+
+		std::string text = "Points: " + std::to_string(PLAYER::player.points) + ".";
+		DrawTextEx(font, text.c_str(), Vector2{ 0,0 }, BUTTON::scoreFontSize, 0, YELLOW);
+	}
+
 	void update_Player_Points(PLATFORM::Platform& plat)
 	{
 		if (!plat.counted_Point)
