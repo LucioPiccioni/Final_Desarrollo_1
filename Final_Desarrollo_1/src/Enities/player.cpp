@@ -43,4 +43,68 @@ namespace PLAYER
 			(player.pos.x + player.width > platform.x) &&
 			(player.pos.x < platform.x + platform.width));
 	}
+
+	void draw()
+	{
+		Vector2 spriteRaltedPlayerPos;
+		Texture2D currentSprite;
+		Rectangle sourceRect;
+		Rectangle destRect;
+		Vector2 origin = { 0, 0 };
+		float rotation = 0;
+
+#ifdef _DEBUG
+		DrawRectangleV(player.pos, Vector2{ player.width, player.height }, GREEN);
+#endif
+
+		if (!player.on_Floor)
+		{
+			sourceRect = { 0.0f, 0.0f, (player.speed.x > 0 ? 1 : -1) * static_cast<float>(SPRITE::sprites.player_Jump.width), static_cast<float>(SPRITE::sprites.player_Jump.height) };
+			currentSprite = SPRITE::sprites.player_Jump;
+			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
+			sourceRect.x = { static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Idle.width / SPRITE::animationTotalFrames) };
+		}
+		else if (player.speed.x != 0)
+		{
+			// Animación de caminar
+			currentSprite = SPRITE::sprites.player_Run;
+			sourceRect =
+			{
+				static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Run.width / (SPRITE::animationTotalFrames + 1)),
+				0.0f,
+				(player.speed.x > 0 ? 1 : -1) * (static_cast<float>(SPRITE::sprites.player_Run.width) / (SPRITE::animationTotalFrames + 1)),
+				static_cast<float>(SPRITE::sprites.player_Run.height)
+			};
+			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
+		}
+		else
+		{
+			// Animación de Idle
+			currentSprite = SPRITE::sprites.player_Idle;
+			sourceRect = {
+				static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Idle.width / SPRITE::animationTotalFrames),
+				0.0f,
+				static_cast<float>(SPRITE::sprites.player_Idle.width) / SPRITE::animationTotalFrames,
+				static_cast<float>(SPRITE::sprites.player_Idle.height)
+			};
+			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
+		}
+
+
+		destRect = {
+			spriteRaltedPlayerPos.x,
+			spriteRaltedPlayerPos.y,
+			player.width,
+			player.height
+		};
+
+		DrawTexturePro(
+			currentSprite,
+			sourceRect,
+			destRect,
+			origin,
+			rotation,
+			WHITE
+		);
+	}
 }
