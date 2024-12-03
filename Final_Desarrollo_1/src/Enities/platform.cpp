@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 #include "Program/program_Data.h"
+#include "Res/sprites.h"
 
 namespace PLATFORM
 {
@@ -90,6 +91,23 @@ namespace PLATFORM
 			platform.left_Movement = false;
 			platform.right_Movement = true;
 		}
+	}
+
+	void draw(Rectangle rect)
+	{
+#ifdef _DEBUG
+
+		DrawRectangleRec(rect, YELLOW);
+
+#endif
+
+		DrawTexturePro(
+			SPRITE::sprites.platform,
+			Rectangle{ 0,0, rect.width, rect.height },
+			rect,
+			Vector2{ 0,0 },
+			0,
+			WHITE);
 	}
 
 }
