@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Gameplay\gameplay.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Program\program.cpp" />
     <ClCompile Include="src\Program\program_Data.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="src\Program\Utilities\button.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Gameplay\gameplay.h" />
     <ClInclude Include="src\Program\program.h" />
     <ClInclude Include="src\Program\program_Data.h" />
     <ClInclude Include="src\Program\program_Manager.h" />

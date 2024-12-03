@@ -31,6 +31,12 @@
     <Filter Include="Resource Files\Res">
       <UniqueIdentifier>{72fb9722-dca5-484c-b237-9a1a0fa65a42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Gameplay">
+      <UniqueIdentifier>{5f178833-ba58-4cc3-8755-f1d97c2a624b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gameplay">
+      <UniqueIdentifier>{10a090a2-a3ba-43eb-aea3-091305a579d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -48,6 +54,9 @@
     <ClCompile Include="src\Program\Utilities\button.cpp">
       <Filter>Resource Files\Program\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="src\Gameplay\gameplay.cpp">
+      <Filter>Resource Files\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\program_Data.h">
@@ -61,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="src\Program\Utilities\button.h">
       <Filter>Header Files\Program\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gameplay\gameplay.h">
+      <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
