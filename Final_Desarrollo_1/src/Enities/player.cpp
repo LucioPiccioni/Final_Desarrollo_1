@@ -11,6 +11,27 @@ namespace PLAYER
 
 	float actual_Gravity = min_Gravity;
 
+	void animate(float deltaTime)
+	{
+		player.framesCounter += deltaTime;
+
+		const float frameDuration = 0.12f;
+
+		if (player.framesCounter >= frameDuration)
+		{
+			player.framesCounter -= frameDuration;
+			player.currentFrame++;
+
+			if (player.currentFrame > SPRITE::animationTotalFrames)
+			{
+				player.currentFrame = 0;
+				player.animate = false;
+			}
+
+			player.frameRect.x = static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Run.width / SPRITE::animationTotalFrames);
+		}
+	}
+
 	void movement_Input(float delta_Time)
 	{
 		player.input_Pressed = false;
