@@ -144,7 +144,6 @@ namespace PLAYER
 		}
 	}
 
-
 	void limit_Horizontal_Speed()
 	{
 		if (player.speed.x > movement_Speed)
