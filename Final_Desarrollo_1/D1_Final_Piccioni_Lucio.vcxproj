@@ -20,6 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Program\program.cpp" />
+    <ClCompile Include="src\Program\program_Data.cpp" />
+    <ClCompile Include="src\Program\program_Manager.cpp" />
+    <ClCompile Include="src\Program\Utilities\button.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Program\program.h" />
+    <ClInclude Include="src\Program\program_Data.h" />
+    <ClInclude Include="src\Program\program_Manager.h" />
+    <ClInclude Include="src\Program\Utilities\button.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

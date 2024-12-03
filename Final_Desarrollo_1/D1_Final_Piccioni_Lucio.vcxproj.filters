@@ -13,10 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Program">
+      <UniqueIdentifier>{ba5d2bcd-0253-4390-8549-b1183a3de50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Program">
+      <UniqueIdentifier>{90bf51ac-6bf3-4839-ab32-d161514f55be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Program\Utilities">
+      <UniqueIdentifier>{0facb205-ec70-4cda-bd0c-d66288f3948a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Program\Utilities">
+      <UniqueIdentifier>{eb7dd778-b576-418c-b253-2a39d6a0a4d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Res">
+      <UniqueIdentifier>{5216f0ba-75e4-433b-ace0-0a926f5c2524}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Res">
+      <UniqueIdentifier>{72fb9722-dca5-484c-b237-9a1a0fa65a42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Program\program_Data.cpp">
+      <Filter>Resource Files\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Program\program_Manager.cpp">
+      <Filter>Resource Files\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Program\program.cpp">
+      <Filter>Resource Files\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Program\Utilities\button.cpp">
+      <Filter>Resource Files\Program\Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Program\program_Data.h">
+      <Filter>Header Files\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Program\program_Manager.h">
+      <Filter>Header Files\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Program\program.h">
+      <Filter>Header Files\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Program\Utilities\button.h">
+      <Filter>Header Files\Program\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
