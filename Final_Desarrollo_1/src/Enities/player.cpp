@@ -87,6 +87,58 @@ namespace PLAYER
 		}
 	}
 
+	void apply_Gravity(float delta_Time)
+	{
+		if (!player.on_Floor)
+			player.speed.y += actual_Gravity * delta_Time;
+	}
+
+	void apply_Friction(float delta_Time)
+	{
+		if (player.speed.x != 0)
+		{
+			if (player.speed.x < 0)
+				player.speed.x += friction * delta_Time;
+			else
+				player.speed.x -= friction * delta_Time;
+		}
+	}
+
+	void update_Horizontal_Pos_On_Platform(float delta_Time)
+	{
+		delta_Time = delta_Time;
+
+		if (player.platform_Standing)
+		{
+			float relative_X = player.pos.x - player.platform_Standing->rect_Pos.x;
+
+			player.pos.x = player.platform_Standing->rect_Pos.x + relative_X;
+
+			Rectangle platform_Bounds = {
+				player.platform_Standing->rect_Pos.x,
+				player.platform_Standing->rect_Pos.y,
+				player.platform_Standing->rect_Pos.width,
+				player.platform_Standing->rect_Pos.height
+			};
+
+			if (player.pos.x < platform_Bounds.x)
+			{
+				player.pos.x = platform_Bounds.x;
+				player.speed.x = 0;
+
+				if (player.speed.x < 0)
+					player.speed.x += friction * delta_Time;
+			}
+			else if (player.pos.x + player.width > platform_Bounds.x + platform_Bounds.width)
+			{
+				player.pos.x = platform_Bounds.x + platform_Bounds.width - player.width;
+
+				if (player.speed.x > 0)
+					player.speed.x -= friction * delta_Time;
+			}
+		}
+	}
+
 	bool Is_on_Platform(Rectangle platform)
 	{
 		return (
