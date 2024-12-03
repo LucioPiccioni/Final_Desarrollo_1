@@ -1,13 +1,13 @@
 #include "raylib.h"
 
-#include "Engine/state_machine.h"
-#include "Engine/game_data.h"
+#include "Program/program_Data.h"
+#include "Program/program_Manager.h"
 
 namespace CONFIRM_EXIT
 {
-	void initButtons();
+	void init();
 
-	void update(GAME_STATES::ProgramState& gameState);
+	void update(PROGRAM_MANAGER::State_Manager& state_manager);
 
 	void draw(Font font);
 }

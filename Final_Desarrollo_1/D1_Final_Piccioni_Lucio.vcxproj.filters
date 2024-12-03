@@ -90,6 +90,9 @@
     <ClCompile Include="src\Menus\credits.cpp">
       <Filter>Resource Files\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Menus\confirm_exit.cpp">
+      <Filter>Resource Files\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\program_Data.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files\Menus</Filter>
     </ClInclude>
     <ClInclude Include="src\Menus\credits.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Menus\confirm_exit.h">
       <Filter>Header Files\Menus</Filter>
     </ClInclude>
   </ItemGroup>

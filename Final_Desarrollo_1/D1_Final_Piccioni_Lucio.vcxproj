@@ -23,6 +23,7 @@
     <ClCompile Include="src\Enities\player.cpp" />
     <ClCompile Include="src\Gameplay\gameplay.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Menus\confirm_exit.cpp" />
     <ClCompile Include="src\Menus\credits.cpp" />
     <ClCompile Include="src\Menus\game_over.cpp" />
     <ClCompile Include="src\Menus\main_menu.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="src\Enities\platform.h" />
     <ClInclude Include="src\Enities\player.h" />
     <ClInclude Include="src\Gameplay\gameplay.h" />
+    <ClInclude Include="src\Menus\confirm_exit.h" />
     <ClInclude Include="src\Menus\credits.h" />
     <ClInclude Include="src\Menus\game_over.h" />
     <ClInclude Include="src\Menus\main_menu.h" />
