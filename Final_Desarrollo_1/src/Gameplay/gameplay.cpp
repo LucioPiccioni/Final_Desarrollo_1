@@ -85,6 +85,11 @@ namespace GAMEPLAY
 		}
 	}
 
+	bool did_Player_Died()
+	{
+		return (PLAYER::player.pos.y > PROGRAM_DATA::screenHeight);
+	}
+
 	void If_On_Platform(float delta_Time)
 	{
 		delta_Time = delta_Time;
@@ -113,6 +118,19 @@ namespace GAMEPLAY
 				PLAYER::player.on_Floor = false;
 				PLAYER::player.platform_Standing = nullptr;
 			}
+		}
+	}
+
+	void deactivate_Platform()
+	{
+		for (int i = 0; i < maxPlatform; i++)
+		{
+			if (platform[i].active && platform[i].rect_Pos.y > PROGRAM_DATA::screenHeight)
+			{
+				platform[i].active = false;
+				break;
+			}
+
 		}
 	}
 
