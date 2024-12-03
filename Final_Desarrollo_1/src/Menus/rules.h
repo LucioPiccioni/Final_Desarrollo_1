@@ -1,12 +1,12 @@
 #include "raylib.h"
 
-#include "Engine/state_machine.h"
+#include "Program/program_Manager.h"
 
-namespace RULES_MENU
+namespace RULES
 {
-	void initializeRulesMenu();
+	void init();
 
-	void updateRulesMenu(GAME_STATES::Gamestate& programState);
+	void update(PROGRAM_MANAGER::State_Manager& state_Manager);
 
-	void drawRulesMenu(Font font);
+	void draw(Font font);
 }

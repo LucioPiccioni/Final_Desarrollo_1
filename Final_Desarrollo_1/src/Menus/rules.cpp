@@ -2,30 +2,32 @@
 
 #include "raylib.h"
 
-#include "Engine/game_data.h"
-#include "Menus/button.h"
-#include "Engine/sounds.h"
-#include "Gameplay/sprites.h"
+#include "Program/program_Data.h"
+#include "Program/program_Manager.h"
+#include "Program/Utilities/button.h"
 
-namespace RULES_MENU
+#include "Res/sounds.h"
+#include "Res/sprites.h"
+
+namespace RULES
 {
 	BUTTON::Button button;
 
-	void initializeRulesMenu()
+	void init()
 	{
 		button.text = "Menu";
 
-		button.rect = { (SCREEN_WIDTH - BUTTON::buttonWidth) * 0.5f ,
-			SCREEN_HEIGHT - BUTTON::buttonHeight, BUTTON::buttonWidth,  BUTTON::buttonHeight };
+		button.rect = { ( PROGRAM_DATA::screenWidth - BUTTON::width) * 0.5f ,
+			PROGRAM_DATA::screenHeight - BUTTON::height, BUTTON::width,  BUTTON::height };
 
-		button.option = GAME_STATES::Gamestate::MAIN_MENU;
+		button.option = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 	}
 
-	void updateRulesMenu(GAME_STATES::Gamestate& programState)
+	void update(PROGRAM_MANAGER::State_Manager& program_Manager)
 	{
 		Vector2 mouse = GetMousePosition();
 
-		SPRITES::updateTexturesPos(GetFrameTime());
+		SPRITE::update_Paralax_Pos(GetFrameTime());
 
 		if (BUTTON::isButtonClicked(mouse, button))
 		{
@@ -38,22 +40,24 @@ namespace RULES_MENU
 
 			if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 			{
-				StopSound(SOUNDS::gameSounds.button);
-				PlaySound(SOUNDS::gameSounds.button);
-				programState = GAME_STATES::Gamestate::MAIN_MENU;
+				StopSound(SOUND::gameSounds.button);
+				PlaySound(SOUND::gameSounds.button);
+				program_Manager.actual = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 			}
 		}
 		else
 		{
-			button.color = { 255, 182, 193, 255 };
+			button.color = BUTTON::button_Default_Color;
 		}
 	}
 
-	void drawRulesMenu(Font font)
+	void draw(Font font)
 	{
-		SPRITES::drawBackgroundAssets();
+		SPRITE::draw_Paralax();
 
-		DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, Color{ 0, 0, 0, 225 });
+		DrawRectangle(0, 0, 
+			static_cast<int>(PROGRAM_DATA::screenWidth),
+			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 225 });
 
 		DrawTextPro(font, "Rules",
 			Vector2{ (GetScreenWidth() - MeasureTextEx(font, "Rules", 40, 0).x) * 0.5f, 50 },
