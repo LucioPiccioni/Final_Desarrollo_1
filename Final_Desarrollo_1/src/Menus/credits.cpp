@@ -2,12 +2,13 @@
 
 #include "raylib.h"
 
-#include "Engine/game_data.h"
-#include "Engine/sounds.h"
-#include "Gameplay/sprites.h"
-#include "Menus/button.h"
+#include "Program/program_Data.h"
+#include "Program/Utilities/button.h"
 
-namespace CREDITS_MENU
+#include "Res/sounds.h"
+#include "Res/sprites.h"
+
+namespace CREDITS
 {
 	const int maxCredits = 8;
 
@@ -25,35 +26,41 @@ namespace CREDITS_MENU
 		{"Jen \"Quiet Nights\"", "https://www.youtube.com/watch?v=d_-ECIjWTHY", {}}
 	};
 
-	void initializeCreditsMenu()
+	void init()
 	{
-		float startX = 100;
+		float buttonURLWidth = 120;
+		float buttonURLHeight = 30;
+		float buttonURLspacing = 20;
+
+		float startX = PROGRAM_DATA::screenWidth - buttonURLWidth * 1.5f;
 		float startY = 150;
-		float buttonWidth = 120;
-		float buttonHeight = 30;
-		float spacing = 20;
 
 		for (int i = 0; i < maxCredits; i++)
 		{
-			credits[i].buttonRect = { startX + 600, startY + i * (buttonHeight + spacing), buttonWidth, buttonHeight };
+			credits[i].buttonRect = { startX, startY + i * (buttonURLHeight + buttonURLspacing), buttonURLWidth, buttonURLHeight };
 		}
 
-		button.rect = { SCREEN_WIDTH * 0.5f - BUTTON::buttonWidth * 0.5f, SCREEN_HEIGHT - BUTTON::buttonHeight, BUTTON::buttonWidth, BUTTON::buttonHeight };
+		button.rect = {
+			(PROGRAM_DATA::screenWidth - BUTTON::width) * 0.5f,
+			PROGRAM_DATA::screenHeight - BUTTON::height * 2,
+			BUTTON::width,
+			BUTTON::height };
+
 		button.text = "Menu";
 	}
 
-	void updateCreditsMenu(GAME_STATES::Gamestate& programState)
+	void update(PROGRAM_MANAGER::Program_State& program_State)
 	{
 		Vector2 mouse = GetMousePosition();
 
-		SPRITES::updateTexturesPos(GetFrameTime());
+		SPRITE::update_Paralax_Pos(GetFrameTime());
 
 		for (int i = 0; i < maxCredits; i++)
 		{
 			if (CheckCollisionPointRec(mouse, credits[i].buttonRect) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 			{
-				StopSound(SOUNDS::gameSounds.button);
-				PlaySound(SOUNDS::gameSounds.button);
+				StopSound(SOUND::gameSounds.button);
+				PlaySound(SOUND::gameSounds.button);
 				OpenURL(credits[i].url);
 			}
 		}
@@ -69,14 +76,14 @@ namespace CREDITS_MENU
 
 			if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 			{
-				StopSound(SOUNDS::gameSounds.button);
-				PlaySound(SOUNDS::gameSounds.button);
-				programState = GAME_STATES::Gamestate::MAIN_MENU;
+				StopSound(SOUND::gameSounds.button);
+				PlaySound(SOUND::gameSounds.button);
+				program_State = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 			}
 		}
 		else
 		{
-			button.color = { 255, 182, 193, 255 };
+			button.color = BUTTON::button_Default_Color;
 		}
 	}
 
@@ -103,14 +110,17 @@ namespace CREDITS_MENU
 	}
 
 
-	void drawCreditsMenu(Font font)
+	void draw(Font font)
 	{
-		SPRITES::drawBackgroundAssets();
+		SPRITE::draw_Paralax();
 
-		DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, Color{ 0, 0, 0, 125 });
+		DrawRectangle(0, 0, 
+			static_cast<int>(PROGRAM_DATA::screenWidth), 
+			static_cast<int>(PROGRAM_DATA::screenHeight), 
+			Color{ 0, 0, 0, 125 });
 
 		DrawTextPro(font, "Developed by: Lucio Piccioni",
-			Vector2{ (SCREEN_WIDTH - MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).x) * 0.5f,
+			Vector2{ (PROGRAM_DATA::screenWidth - MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).x) * 0.5f,
 			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).y },
 			Vector2{ 0, 0 },
 			0,
@@ -119,21 +129,21 @@ namespace CREDITS_MENU
 			WHITE);
 
 		Vector2 myButton =
-			Vector2{ (SCREEN_WIDTH - BUTTON::buttonWidth) * 0.5f,
+			Vector2{ (PROGRAM_DATA::screenWidth - BUTTON::width) * 0.5f,
 			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).y * 2 };
 
 		float startX = 100;
 		float startY = 150;
 		float spacing = 20;
 
-		credits[0].buttonRect = Rectangle{ myButton.x, myButton.y, BUTTON::buttonWidth, BUTTON::buttonHeight };
+		credits[0].buttonRect = Rectangle{ myButton.x, myButton.y, BUTTON::width, BUTTON::height };
 
 		for (int i = 0; i < maxCredits; i++)
 		{
-			DrawTextPro(font, credits[i].text, 
-				Vector2{ startX, startY + i * (30 + spacing) }, 
+			DrawTextPro(font, credits[i].text,
+				Vector2{ startX, startY + i * (30 + spacing) },
 				Vector2{ 0, 0 }, 0, BUTTON::textFontSize * 0.70,
-				0, 
+				0,
 				WHITE);
 
 			drawCreditButton(

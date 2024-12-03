@@ -1,8 +1,8 @@
 #include "raylib.h"
 
-#include "Engine/state_machine.h"
+#include "Program/program_Manager.h"
 
-namespace CREDITS_MENU
+namespace CREDITS
 {
 	struct Credit
 	{
@@ -11,11 +11,11 @@ namespace CREDITS_MENU
 		Rectangle buttonRect;
 	};
 
-	void initializeCreditsMenu();
+	void init();
 
-	void updateCreditsMenu(GAME_STATES::Gamestate& programState);
+	void update(PROGRAM_MANAGER::Program_State& program_State);
 
 	void drawCreditButton(Rectangle rect, const char* text, Font font, Color color, Color outline, float fontSize);
 
-	void drawCreditsMenu(Font font);
+	void draw(Font font);
 }
