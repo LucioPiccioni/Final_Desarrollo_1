@@ -144,6 +144,19 @@ namespace PLAYER
 		}
 	}
 
+
+	void limit_Horizontal_Speed()
+	{
+		if (player.speed.x > movement_Speed)
+		{
+			player.speed.x = movement_Speed;
+		}
+		if (player.speed.x < -movement_Speed)
+		{
+			player.speed.x = -movement_Speed;
+		}
+	}
+
 	bool Is_on_Platform(Rectangle platform)
 	{
 		return (
