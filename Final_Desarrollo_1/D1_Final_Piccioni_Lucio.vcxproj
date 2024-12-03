@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Enities\platform.cpp" />
-    <ClCompile Include="src\Enities\player.cpp" />
+    <ClCompile Include="src\Entities\platform.cpp" />
+    <ClCompile Include="src\Entities\player.cpp" />
     <ClCompile Include="src\Gameplay\gameplay.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menus\confirm_exit.cpp" />
@@ -33,10 +33,13 @@
     <ClCompile Include="src\Program\program_Data.cpp" />
     <ClCompile Include="src\Program\program_Manager.cpp" />
     <ClCompile Include="src\Program\Utilities\button.cpp" />
+    <ClCompile Include="src\Res\music.cpp" />
+    <ClCompile Include="src\Res\sounds.cpp" />
+    <ClCompile Include="src\Res\sprites.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Enities\platform.h" />
-    <ClInclude Include="src\Enities\player.h" />
+    <ClInclude Include="src\Entities\platform.h" />
+    <ClInclude Include="src\Entities\player.h" />
     <ClInclude Include="src\Gameplay\gameplay.h" />
     <ClInclude Include="src\Menus\confirm_exit.h" />
     <ClInclude Include="src\Menus\credits.h" />
@@ -48,6 +51,9 @@
     <ClInclude Include="src\Program\program_Data.h" />
     <ClInclude Include="src\Program\program_Manager.h" />
     <ClInclude Include="src\Program\Utilities\button.h" />
+    <ClInclude Include="src\Res\music.h" />
+    <ClInclude Include="src\Res\sounds.h" />
+    <ClInclude Include="src\Res\sprites.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

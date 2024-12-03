@@ -7,8 +7,8 @@
 #include "Program/Utilities/button.h"
 
 #include "Res/sprites.h"
-#include "Entites/player.h"
-#include "Entites/platform.h"
+#include "Entities/player.h"
+#include "Entities/platform.h"
 
 namespace GAMEPLAY
 {

@@ -66,15 +66,6 @@
     <ClCompile Include="src\Program\Utilities\button.cpp">
       <Filter>Resource Files\Program\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\Gameplay\gameplay.cpp">
-      <Filter>Resource Files\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enities\platform.cpp">
-      <Filter>Resource Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enities\player.cpp">
-      <Filter>Resource Files\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="src\Menus\main_menu.cpp">
       <Filter>Resource Files\Menus</Filter>
     </ClCompile>
@@ -93,6 +84,24 @@
     <ClCompile Include="src\Menus\confirm_exit.cpp">
       <Filter>Resource Files\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\player.cpp">
+      <Filter>Resource Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\platform.cpp">
+      <Filter>Resource Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Res\music.cpp">
+      <Filter>Resource Files\Res</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Res\sounds.cpp">
+      <Filter>Resource Files\Res</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Res\sprites.cpp">
+      <Filter>Resource Files\Res</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gameplay\gameplay.cpp">
+      <Filter>Resource Files\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\program_Data.h">
@@ -106,15 +115,6 @@
     </ClInclude>
     <ClInclude Include="src\Program\Utilities\button.h">
       <Filter>Header Files\Program\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Gameplay\gameplay.h">
-      <Filter>Header Files\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enities\player.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enities\platform.h">
-      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="src\Menus\main_menu.h">
       <Filter>Header Files\Menus</Filter>
@@ -133,6 +133,24 @@
     </ClInclude>
     <ClInclude Include="src\Menus\confirm_exit.h">
       <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\platform.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\player.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Res\music.h">
+      <Filter>Header Files\Res</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Res\sounds.h">
+      <Filter>Header Files\Res</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Res\sprites.h">
+      <Filter>Header Files\Res</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gameplay\gameplay.h">
+      <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

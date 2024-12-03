@@ -59,12 +59,12 @@ namespace PROGRAM
 		SOUND::init();
 		MAIN_MENU::initializeMenu();
 		GAMEPLAY::init();
-		GAME_OVER::initButtons();
+		GAME_OVER::init();
 		SPRITE::init();
-		PAUSE::initButtons();
-		RULES_MENU::initializeRulesMenu();
-		CREDITS_MENU::initializeCreditsMenu();
-		CONFIRM_EXIT::initButtons();
+		PAUSE::init();
+		RULES::init();
+		CREDITS::init();
+		CONFIRM_EXIT::init();
 	}
 
 	void loop()
@@ -144,7 +144,7 @@ namespace PROGRAM
 		{
 		case PROGRAM_MANAGER::Program_State::MAIN_MENU:
 
-			MAIN_MENU::drawMenu(font);
+			MAIN_MENU::draw(font);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::GAMEPLAY:
@@ -164,12 +164,12 @@ namespace PROGRAM
 
 		case PROGRAM_MANAGER::Program_State::RULES:
 
-			RULES_MENU::drawRulesMenu(font);
+			RULES::draw(font);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::CREDITS:
 
-			CREDITS_MENU::drawCreditsMenu(font);
+			CREDITS::draw(font);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::WANT_TO_EXIT:

@@ -1,7 +1,7 @@
 #include "sprites.h"
 
-#include "program_Data.h"
-#include "platform.h"
+#include "Program/program_Data.h"
+#include "Entities/platform.h"
 
 namespace SPRITE
 {

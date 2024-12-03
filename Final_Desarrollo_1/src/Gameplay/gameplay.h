@@ -2,9 +2,9 @@
 
 #include "raylib.h"
 
-#include "program_Manager.h"
+#include "Program/program_Manager.h"
 
-#include "platform.h"
+#include "Entities/platform.h"
 
 namespace GAMEPLAY
 {
