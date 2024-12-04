@@ -1,57 +1,61 @@
-# **Stellar Jump - Proyecto Final de Desarrollo I**
+# **Stellar Jump - Final Project for Development I**
 
-Este proyecto es el trabajo final de la materia **Desarrollo I**, desarrollado en **C++** utilizando la biblioteca gráfica **raylib**. Es un juego inspirado en **Doodle Jump**, pero ambientado en el espacio, con mecánicas únicas que ofrecen un desafío emocionante.
+This project is the final assignment for the **Development I** course, developed in **C++** using the **raylib** graphics library. It is a game inspired by **Doodle Jump**, but set in space, featuring unique mechanics that offer an exciting challenge.
 
-## **Características principales**
-- **Ambientación espacial:** Salta entre plataformas en un entorno cósmico lleno de movimiento y dinamismo.
-- **Plataformas dinámicas:** Las plataformas descienden constantemente y se mueven horizontalmente, agregando un nivel de dificultad adicional.
-- **Gráficos con raylib:** El juego utiliza la biblioteca gráfica raylib para ofrecer una experiencia visual simple pero efectiva.
-- **Mecánicas de puntuación:** Obtén puntos al sobrevivir más tiempo y alcanzar tu mayor puntuacion.
+## **Main Features**  
+- **Space Theme:** Jump between platforms in a cosmic environment full of movement and dynamism.  
+- **Dynamic Platforms:** Platforms constantly descend and move horizontally, adding an extra level of difficulty.  
+- **Graphics with raylib:** The game uses the raylib graphics library to deliver a simple yet effective visual experience.  
+- **Scoring Mechanics:** Earn points by surviving longer and achieving your highest score.
 
-## **Requisitos del sistema**
-- **Sistema Operativo:** Windows, macOS o Linux.
+## **System Requirements**  
+- **Operating System:** Windows, macOS, or Linux.
 
-## **Cómo instalar y ejecutar**
+## **How to Install and Run**
 
+1. Go to the provided Itch.io link and download the ZIP file named "Stellar Jumps".  
+   Itch.io Page: [https://kapnack.itch.io/jumper]  
 
+2. **Unzip the File:**  
+   - Locate the downloaded file on your computer.  
+   - Right-click on the ZIP file and select "Extract All" (or use your preferred file extraction tool).  
+   - Choose a destination folder for the extracted files and click "Extract".  
 
-## **Cómo jugar**
-1. Usa las **teclas WSD/FLECHAS** para mover al jugador a izquierda, derecha y saltar.
-  * W / Space / Flecha Arriba: Saltar.
-  * A / Flecha izquierda: Movimiento hacia la izquierda.
-  * D / Flecha deracha: Movimiento hacia la derecha.
+3. **Run the Game:**  
+   - Open the folder where you extracted the files.  
+   - Look for the file named `StellarJumps.exe`.  
+   - Double-click the `.exe` file to start the game.
 
-2. Salta de plataforma en plataforma para evitar caer.
-   
-4. Gana puntos sobreviviendo mientras las plataformas caen y se mueven horizontalmente.
-   
-6. ¡Alcanza la mayor altura posible y desafía a tus amigos!
+## **How to Play**  
+1. Use the **WASD/ARROW keys** to move the player left, right, and jump.  
+   - **W / Space / Up Arrow:** Jump.  
+   - **A / Left Arrow:** Move left.  
+   - **D / Right Arrow:** Move right.  
 
-## **Inspiración**
-Este proyecto fue creado como parte de la evaluación final de la materia **Desarrollo I**, demostrando habilidades en:
-- **Programación Estructurada.**
-- Uso de **raylib** para gráficos interactivos.
-- Implementación de lógica de juego basada en físicas y colisiones.
+2. Jump from platform to platform to avoid falling.  
 
-## **Créditos**
-Desarrollado por: Lucio Piccioni. [https://kapnack.itch.io]
+3. Earn points by surviving as the platforms fall and move horizontally.  
 
-Pixel Frog "Virtual Boy" - Character. [https://pixelfrog-assets.itch.io/pixel-adventure-1]
+4. Reach the highest possible height and challenge your friends!
 
-Plrang Art "Iron stone meteorite or coal surface" - Platform. [http://spritefx.blogspot.com/2013/04/sprite-wind.html]
+## **Inspiration**  
+This project was created as part of the final assessment for the **Development I** course, showcasing skills in:  
+- **Structured Programming.**  
+- Using **raylib** for interactive graphics.  
+- Implementing game logic based on physics and collisions.
 
-DinVStudio "Dynamic space background" - Paralax. [https://dinvstudio.itch.io/dynamic-space-background-lite-free]
+## **Credits**  
+Developed by: Lucio Piccioni. [https://kapnack.itch.io]  
 
-Chiptone "Sound Effects". [https://sfbgames.itch.io/chiptone]
+- Pixel Frog "Virtual Boy" - Character. [https://pixelfrog-assets.itch.io/pixel-adventure-1]  
+- Plrang Art "Iron stone meteorite or coal surface" - Platform. [http://spritefx.blogspot.com/2013/04/sprite-wind.html]  
+- DinVStudio "Dynamic space background" - Parallax. [https://dinvstudio.itch.io/dynamic-space-background-lite-free]  
+- Chiptone "Sound Effects." [https://sfbgames.itch.io/chiptone]  
+- Purrple Cat "Breathtaking" - Gameplay Music. [https://www.youtube.com/watch?v=wvJgGh1EpaU]  
+- Harris Cole "Louie's Lullaby" - Credits Music. [https://www.youtube.com/watch?v=lraoB66OW1s]  
+- Jen "Quiet Nights" - Game Over Music. [https://www.youtube.com/watch?v=d_-ECIjWTHY]  
+- The Fontry "JSL Space Gothic" - Font. [https://thefontry.com/jlsdatagothic/]  
 
-Purrple Cat "Breathtaking" - Gameplay music. [https://www.youtube.com/watch?v=wvJgGh1EpaU]
+Course: Development I - First Year - Advanced Technical Degree in Video Game Development.  
 
-Harris Cole "Louie's Lullaby" - Credits Music. [https://www.youtube.com/watch?v=lraoB66OW1s]
-
-Jen "Quiet Nights" - Game Over music. [https://www.youtube.com/watch?v=d_-ECIjWTHY]
-
-The Fontry "JSL Space Gothic" - Font. [https://thefontry.com/jlsdatagothic/]
-
-Materia: Desarrollo I - Primer Año - Tecnicatura Superior en Desarrollo de Videojuegos. 
-
-¡Explora el espacio, desafía la gravedad y alcanza las estrellas en Stellar Jumps! 🚀
+Explore space, defy gravity, and reach for the stars in Stellar Jumps! 🚀
