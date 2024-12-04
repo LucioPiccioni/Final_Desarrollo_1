@@ -10,7 +10,7 @@
 
 namespace CREDITS
 {
-	const int maxCredits = 9;
+	const int maxCredits = 10;
 
 	BUTTON::Button button = {};
 
@@ -18,7 +18,8 @@ namespace CREDITS
 	{
 		{"", "https://kapnack.itch.io", {}},
 		{"Pixel Frog \"Virtual Boy\" - Character.", "https://pixelfrog-assets.itch.io/pixel-adventure-1", {}},
-		{"Plrang Art \"Iron stone meteorite or coal surface\" - Platform.", "http://spritefx.blogspot.com/2013/04/sprite-wind.html", {}},
+		{"Plrang Art \"Iron stone meteorite\" - Platform.", "http://spritefx.blogspot.com/2013/04/sprite-wind.html", {}},
+		{"Theo \"undertale save point\" - Star.", "https://www.pixil.art/art/undertale-save-point-sr2f0d4478d5fdc?ft=user&ft_id=1363091", {}},
 		{"DinVStudio \"Dynamic space background\" - Paralax.", "https://dinvstudio.itch.io/dynamic-space-background-lite-free", {}},
 		{"Chiptone \"Sound Effects\".", "https://sfbgames.itch.io/chiptone", {}},
 		{"Purrple Cat \"Breathtaking\" - Gameplay music.", "https://www.youtube.com/watch?v=wvJgGh1EpaU", {}},
