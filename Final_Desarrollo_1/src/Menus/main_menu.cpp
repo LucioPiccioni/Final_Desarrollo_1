@@ -72,7 +72,7 @@ namespace MAIN_MENU
 		DrawRectangle(0, 0, static_cast<int>(PROGRAM_DATA::screen_Width),
 			static_cast<int>(PROGRAM_DATA::screen_Height), Color{ 0, 0, 0, 125 });
 
-		DrawTextEx(font, "v0.4", Vector2{ 0, 0 }, 20, 0, WHITE);
+		DrawTextEx(font, "v1.0", Vector2{ 0, 0 }, 20, 0, WHITE);
 
 		std::string title = "Stellar Jumps";
 
