@@ -183,10 +183,10 @@ namespace PLAYER
 
 	void draw()
 	{
-		Vector2 spriteRaltedPlayerPos;
-		Texture2D currentSprite;
-		Rectangle sourceRect;
-		Rectangle destRect;
+		Vector2 sprite_Ralted_Player_Pos;
+		Texture2D current_Sprite;
+		Rectangle source_Rect;
+		Rectangle dest_Rect;
 		Vector2 origin = { 0, 0 };
 		float rotation = 0;
 
@@ -196,49 +196,49 @@ namespace PLAYER
 
 		if (!player.on_Floor)
 		{
-			sourceRect = { 0.0f, 0.0f, (player.speed.x > 0 ? 1 : -1) * static_cast<float>(SPRITE::sprites.player_Jump.width), static_cast<float>(SPRITE::sprites.player_Jump.height) };
-			currentSprite = SPRITE::sprites.player_Jump;
-			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
-			sourceRect.x = { static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Idle.width / SPRITE::animation_Total_Frames) };
+			source_Rect = { 0.0f, 0.0f, (player.speed.x > 0 ? 1 : -1) * static_cast<float>(SPRITE::sprites.player_Jump.width), static_cast<float>(SPRITE::sprites.player_Jump.height) };
+			current_Sprite = SPRITE::sprites.player_Jump;
+			sprite_Ralted_Player_Pos = { player.pos.x, player.pos.y };
+			source_Rect.x = { static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Idle.width / SPRITE::animation_Total_Frames) };
 		}
 		else if (player.speed.x != 0)
 		{
 			// Animación de caminar
-			currentSprite = SPRITE::sprites.player_Run;
-			sourceRect =
+			current_Sprite = SPRITE::sprites.player_Run;
+			source_Rect =
 			{
 				static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Run.width / (SPRITE::animation_Total_Frames + 1)),
 				0.0f,
 				(player.speed.x > 0 ? 1 : -1) * (static_cast<float>(SPRITE::sprites.player_Run.width) / (SPRITE::animation_Total_Frames + 1)),
 				static_cast<float>(SPRITE::sprites.player_Run.height)
 			};
-			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
+			sprite_Ralted_Player_Pos = { player.pos.x, player.pos.y };
 		}
 		else
 		{
 			// Animación de Idle
-			currentSprite = SPRITE::sprites.player_Idle;
-			sourceRect = {
+			current_Sprite = SPRITE::sprites.player_Idle;
+			source_Rect = {
 				static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Idle.width / SPRITE::animation_Total_Frames),
 				0.0f,
 				static_cast<float>(SPRITE::sprites.player_Idle.width) / SPRITE::animation_Total_Frames,
 				static_cast<float>(SPRITE::sprites.player_Idle.height)
 			};
-			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
+			sprite_Ralted_Player_Pos = { player.pos.x, player.pos.y };
 		}
 
 
-		destRect = {
-			spriteRaltedPlayerPos.x,
-			spriteRaltedPlayerPos.y,
+		dest_Rect = {
+			sprite_Ralted_Player_Pos.x,
+			sprite_Ralted_Player_Pos.y,
 			player.width,
 			player.height
 		};
 
 		DrawTexturePro(
-			currentSprite,
-			sourceRect,
-			destRect,
+			current_Sprite,
+			source_Rect,
+			dest_Rect,
 			origin,
 			rotation,
 			WHITE
