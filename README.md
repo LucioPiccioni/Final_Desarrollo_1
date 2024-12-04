@@ -1,4 +1,4 @@
-# **Stellar Jump - Final Project for Development I**
+# **Stellar Jumps - Final Project for Development I**
 
 This project is the final assignment for the **Development I** course, developed in **C++** using the **raylib** graphics library. It is a game inspired by **Doodle Jump**, but set in space, featuring unique mechanics that offer an exciting challenge.
 
