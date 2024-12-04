@@ -68,8 +68,10 @@ namespace RULES
 		float spacing = 40;
 
 		DrawTextPro(font, "Gameplay:", Vector2{ textX, textY }, Vector2{ 0, 0 }, 0, 30, 0, WHITE);
-		DrawTextPro(font, "Jump through platforms and survive as long as possible.",
+		DrawTextPro(font, "Jump through platforms to gain points and survive as long as possible.",
 			Vector2{ textX + 20, textY + spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
+		DrawTextPro(font, "Grab Stars to gain 2 points.",
+			Vector2{ textX + 20, textY + 2 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
 
 		DrawTextPro(font, "Controls:", Vector2{ textX, textY + 3 * spacing }, Vector2{ 0, 0 }, 0, 30, 0, WHITE);
 		DrawTextPro(font, "SPACE / W / Up Arrow: To jump.",
