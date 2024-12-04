@@ -14,46 +14,46 @@ namespace PLATFORM
 	{
 		const float height = 20;
 
-		Platform newPlatform;
+		Platform new_Platform;
 
-		newPlatform.active = true;
+		new_Platform.active = true;
 
-		newPlatform.rect_Pos.width = actual_length;
+		new_Platform.rect_Pos.width = actual_length;
 
-		newPlatform.rect_Pos.height = height;
+		new_Platform.rect_Pos.height = height;
 
-		newPlatform.rect_Pos.x = static_cast<float>(
-			GetRandomValue(0, static_cast<int>(PROGRAM_DATA::screen_Width - newPlatform.rect_Pos.width)));
+		new_Platform.rect_Pos.x = static_cast<float>(
+			GetRandomValue(0, static_cast<int>(PROGRAM_DATA::screen_Width - new_Platform.rect_Pos.width)));
 
-		newPlatform.speed.y = PLATFORM::speed_y;
+		new_Platform.speed.y = PLATFORM::speed_y;
 
 		if (GetRandomValue(0, 1) == 1)
 		{
-			newPlatform.moves_In_x = true;
+			new_Platform.moves_In_x = true;
 
-			newPlatform.speed.x = static_cast<float>(
+			new_Platform.speed.x = static_cast<float>(
 				GetRandomValue(static_cast<int>(PLATFORM::min_Speed.x), static_cast<int>(PLATFORM::max_Speed.x)));
 
 			if (GetRandomValue(0, 1) == 1)
 			{
-				newPlatform.right_Movement = true;
-				newPlatform.left_Movement = false;
+				new_Platform.right_Movement = true;
+				new_Platform.left_Movement = false;
 			}
 			else
 			{
-				newPlatform.left_Movement = true;
-				newPlatform.right_Movement = false;
+				new_Platform.left_Movement = true;
+				new_Platform.right_Movement = false;
 			}
 		}
 
-		newPlatform.rect_Pos.y = -newPlatform.rect_Pos.height;
+		new_Platform.rect_Pos.y = -new_Platform.rect_Pos.height;
 
-		newPlatform.rect_Dest.x = 0;
-		newPlatform.rect_Dest.y = 0;
-		newPlatform.rect_Dest.width = newPlatform.rect_Pos.width;
-		newPlatform.rect_Dest.width = newPlatform.rect_Pos.height;
+		new_Platform.rect_Dest.x = 0;
+		new_Platform.rect_Dest.y = 0;
+		new_Platform.rect_Dest.width = new_Platform.rect_Pos.width;
+		new_Platform.rect_Dest.width = new_Platform.rect_Pos.height;
 
-		return newPlatform;
+		return new_Platform;
 	}
 
 	void update(Platform& platform, float delta_Time)

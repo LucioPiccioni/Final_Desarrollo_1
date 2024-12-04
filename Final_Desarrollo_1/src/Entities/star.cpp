@@ -15,25 +15,25 @@ namespace STAR
 		const int SPAWN_AREA_LEFT = static_cast<int>((PROGRAM_DATA::screen_Width - (PROGRAM_DATA::screen_Width / 3)) / 2);
 		const int SPAWN_AREA_RIGHT = static_cast<int>((PROGRAM_DATA::screen_Width + (PROGRAM_DATA::screen_Width / 3)) / 2);
 
-		Star newStar;
+		Star new_Star;
 
-		newStar.rect.width = 32;
-		newStar.rect.height = 32;
+		new_Star.rect.width = 32;
+		new_Star.rect.height = 32;
 
-		bool validPosition = false;
-		const float minDistance = 15.0f;
+		bool valid_Position = false;
+		const float min_Distance = 15.0f;
 
-		while (!validPosition) 
+		while (!valid_Position) 
 		{
-			newStar.rect.x = static_cast<float>(GetRandomValue(static_cast<int>(SPAWN_AREA_LEFT) + static_cast<int>(newStar.rect.width), SPAWN_AREA_RIGHT));
-			newStar.rect.y = static_cast<float>(GetRandomValue(SPAWN_AREA_TOP + static_cast<int>(newStar.rect.height), SPAWN_AREA_BOTTOM));
+			new_Star.rect.x = static_cast<float>(GetRandomValue(static_cast<int>(SPAWN_AREA_LEFT) + static_cast<int>(new_Star.rect.width), SPAWN_AREA_RIGHT));
+			new_Star.rect.y = static_cast<float>(GetRandomValue(SPAWN_AREA_TOP + static_cast<int>(new_Star.rect.height), SPAWN_AREA_BOTTOM));
 
-			validPosition = isValidPosition(newStar, newStar.rect, minDistance);
+			valid_Position = isValidPosition(new_Star, new_Star.rect, min_Distance);
 		}
 
-		newStar.active = true;
+		new_Star.active = true;
 
-		return newStar;
+		return new_Star;
 	}
 
 	bool isValidPosition(Star newStar, Rectangle actual_Pos, float min_Distance)
