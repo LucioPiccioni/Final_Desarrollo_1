@@ -102,6 +102,9 @@
     <ClCompile Include="src\Gameplay\gameplay.cpp">
       <Filter>Resource Files\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\star.cpp">
+      <Filter>Resource Files\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\program_Data.h">
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="src\Gameplay\gameplay.h">
       <Filter>Header Files\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\star.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

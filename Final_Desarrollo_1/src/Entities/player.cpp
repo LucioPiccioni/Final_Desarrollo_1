@@ -38,8 +38,8 @@ namespace PLAYER
 		if (player.speed.x > movement_Speed) player.speed.x = movement_Speed;
 		if (player.speed.x < -movement_Speed) player.speed.x = -movement_Speed;
 
-		if (player.pos.x > PROGRAM_DATA::screenWidth) player.pos.x = 0;
-		if (player.pos.x + player.width < 0) player.pos.x = PROGRAM_DATA::screenWidth;
+		if (player.pos.x > PROGRAM_DATA::screen_Width) player.pos.x = 0;
+		if (player.pos.x + player.width < 0) player.pos.x = PROGRAM_DATA::screen_Width;
 
 		if (player.speed.x > -1.0f && player.speed.x < 1.0f && !player.input_Pressed) player.speed.x = 0;
 	}
@@ -170,6 +170,17 @@ namespace PLAYER
 			(player.pos.x < platform.x + platform.width));
 	}
 
+	bool collide_Width_Star(Rectangle star) 
+	{
+		return (
+			player.pos.x < star.x + star.width && 
+			player.pos.x + player.width > star.x &&
+			player.pos.y < star.y + star.height &&
+			player.pos.y + player.height > star.y
+			);
+	}
+
+
 	void draw()
 	{
 		Vector2 spriteRaltedPlayerPos;
@@ -180,7 +191,7 @@ namespace PLAYER
 		float rotation = 0;
 
 #ifdef _DEBUG
-		DrawRectangleV(player.pos, Vector2{ player.width, player.height }, GREEN);
+		DrawRectangleV(player.pos, Vector2{ player.width, player.height }, BLUE);
 #endif
 
 		if (!player.on_Floor)

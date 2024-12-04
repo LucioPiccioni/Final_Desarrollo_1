@@ -16,8 +16,8 @@ namespace GAME_OVER
 
 	void init()
 	{
-		float startX = (static_cast<float>(PROGRAM_DATA::screenWidth) - BUTTON::width) / 2;
-		float startY = ((PROGRAM_DATA::screenHeight - PROGRAM_DATA::screenHeight / 5) - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1)));
+		float startX = (static_cast<float>(PROGRAM_DATA::screen_Width) - BUTTON::width) / 2;
+		float startY = ((PROGRAM_DATA::screen_Height - PROGRAM_DATA::screen_Height / 5) - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1)));
 
 		for (int i = 0; i < maxButtons; i++)
 		{
@@ -81,13 +81,13 @@ namespace GAME_OVER
 	void draw(Font font)
 	{
 		Vector2 gameOverTextSize = MeasureTextEx(font, "GAME OVER", BUTTON::titlesFontSize, 0);
-		Vector2 gameOverPos = { (static_cast<float>(PROGRAM_DATA::screenWidth) - gameOverTextSize.x) * 0.5f, gameOverTextSize.y };
+		Vector2 gameOverPos = { (static_cast<float>(PROGRAM_DATA::screen_Width) - gameOverTextSize.x) * 0.5f, gameOverTextSize.y };
 
 		SPRITE::draw_Paralax();
 
 		DrawRectangle(0, 0, 
-			static_cast<int>(PROGRAM_DATA::screenWidth), 
-			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
+			static_cast<int>(PROGRAM_DATA::screen_Width), 
+			static_cast<int>(PROGRAM_DATA::screen_Height), Color{ 0, 0, 0, 125 });
 
 		DrawTextEx(font, "GAME OVER", gameOverPos, BUTTON::titlesFontSize, 0, RED);
 

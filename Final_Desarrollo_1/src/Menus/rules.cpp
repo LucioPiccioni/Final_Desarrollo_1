@@ -17,8 +17,8 @@ namespace RULES
 	{
 		button.text = "Menu";
 
-		button.rect = { ( PROGRAM_DATA::screenWidth - BUTTON::width) * 0.5f ,
-			PROGRAM_DATA::screenHeight - BUTTON::height, BUTTON::width,  BUTTON::height };
+		button.rect = { ( PROGRAM_DATA::screen_Width - BUTTON::width) * 0.5f ,
+			PROGRAM_DATA::screen_Height - BUTTON::height, BUTTON::width,  BUTTON::height };
 
 		button.option = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 	}
@@ -56,8 +56,8 @@ namespace RULES
 		SPRITE::draw_Paralax();
 
 		DrawRectangle(0, 0, 
-			static_cast<int>(PROGRAM_DATA::screenWidth),
-			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 225 });
+			static_cast<int>(PROGRAM_DATA::screen_Width),
+			static_cast<int>(PROGRAM_DATA::screen_Height), Color{ 0, 0, 0, 225 });
 
 		DrawTextPro(font, "Rules",
 			Vector2{ (GetScreenWidth() - MeasureTextEx(font, "Rules", 40, 0).x) * 0.5f, 50 },

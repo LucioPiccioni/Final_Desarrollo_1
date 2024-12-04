@@ -2,6 +2,6 @@
 
 namespace PROGRAM_DATA
 {
-	float screenWidth = 0;
-	float screenHeight = 0;
+	float screen_Width = 0;
+	float screen_Height = 0;
 }

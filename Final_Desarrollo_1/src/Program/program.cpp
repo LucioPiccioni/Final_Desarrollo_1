@@ -35,14 +35,14 @@ namespace PROGRAM
 
 	void init()
 	{
-		PROGRAM_DATA::screenWidth = 800;
-		PROGRAM_DATA::screenHeight = 800;
+		PROGRAM_DATA::screen_Width = 800;
+		PROGRAM_DATA::screen_Height = 800;
 
 		state_manager.actual = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 		state_manager.previus = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 
-		InitWindow(static_cast<int>(PROGRAM_DATA::screenWidth),
-			static_cast<int>(PROGRAM_DATA::screenHeight), "Jumper");
+		InitWindow(static_cast<int>(PROGRAM_DATA::screen_Width),
+			static_cast<int>(PROGRAM_DATA::screen_Height), "Jumper");
 
 		SetExitKey(0);
 

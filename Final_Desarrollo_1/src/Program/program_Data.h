@@ -2,6 +2,6 @@
 
 namespace PROGRAM_DATA
 {
-	extern float screenWidth;
-	extern float screenHeight;
+	extern float screen_Width;
+	extern float screen_Height;
 }

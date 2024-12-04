@@ -12,11 +12,12 @@ namespace SPRITE
 
 	void init()
 	{
-		sprites.player_Idle = LoadTexture("res/Idle (32x32).png");
-		sprites.player_Run = LoadTexture("res/Run (32x32).png");
-		sprites.player_Jump = LoadTexture("res/Jump (32x32).png");
+		sprites.player_Idle = LoadTexture("res/Character/Idle (32x32).png");
+		sprites.player_Run = LoadTexture("res/Character/Run (32x32).png");
+		sprites.player_Jump = LoadTexture("res/Character/Jump (32x32).png");
 
 		sprites.platform = LoadTexture("res/platform.png");
+		sprites.star = LoadTexture("res/star.png");
 
 		sprites.space = LoadTexture("res/Paralax/space.png");
 	}
@@ -28,6 +29,7 @@ namespace SPRITE
 		UnloadTexture(sprites.player_Jump);
 
 		UnloadTexture(sprites.platform);
+		UnloadTexture(sprites.star);
 
 		UnloadTexture(sprites.space);
 	}
@@ -41,7 +43,7 @@ namespace SPRITE
 		if (skySpeed > 0)
 			SPRITE::spritesMovement.space -= skySpeed;
 
-		if (SPRITE::spritesMovement.space < -PROGRAM_DATA::screenHeight)
+		if (SPRITE::spritesMovement.space < -PROGRAM_DATA::screen_Height)
 			SPRITE::spritesMovement.space = 0;
 	}
 
@@ -51,10 +53,10 @@ namespace SPRITE
 
 		Rectangle sourceRec = { 0.0f, 0.0f, static_cast<float>(SPRITE::sprites.space.width), static_cast<float>(SPRITE::sprites.space.height) };
 
-		Rectangle destRec = { 0, SPRITE::spritesMovement.space, PROGRAM_DATA::screenWidth, PROGRAM_DATA::screenHeight };
+		Rectangle destRec = { 0, SPRITE::spritesMovement.space, PROGRAM_DATA::screen_Width, PROGRAM_DATA::screen_Height };
 		DrawTexturePro(SPRITE::sprites.space, sourceRec, destRec, origin, 0.0f, WHITE);
 
-		destRec = { 0, PROGRAM_DATA::screenHeight + SPRITE::spritesMovement.space, PROGRAM_DATA::screenWidth, PROGRAM_DATA::screenHeight };
+		destRec = { 0, PROGRAM_DATA::screen_Height + SPRITE::spritesMovement.space, PROGRAM_DATA::screen_Width, PROGRAM_DATA::screen_Height };
 		DrawTexturePro(SPRITE::sprites.space, sourceRec, destRec, origin, 0.0f, WHITE);
 	}
 }

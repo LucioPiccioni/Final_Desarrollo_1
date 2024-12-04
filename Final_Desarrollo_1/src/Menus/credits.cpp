@@ -33,7 +33,7 @@ namespace CREDITS
 		float buttonURLHeight = 30;
 		float buttonURLspacing = 20;
 
-		float startX = PROGRAM_DATA::screenWidth - buttonURLWidth * 1.5f;
+		float startX = PROGRAM_DATA::screen_Width - buttonURLWidth * 1.5f;
 		float startY = 150;
 
 		for (int i = 0; i < maxCredits; i++)
@@ -42,8 +42,8 @@ namespace CREDITS
 		}
 
 		button.rect = {
-			(PROGRAM_DATA::screenWidth - BUTTON::width) * 0.5f,
-			PROGRAM_DATA::screenHeight - BUTTON::height * 2,
+			(PROGRAM_DATA::screen_Width - BUTTON::width) * 0.5f,
+			PROGRAM_DATA::screen_Height - BUTTON::height * 2,
 			BUTTON::width,
 			BUTTON::height };
 
@@ -116,12 +116,12 @@ namespace CREDITS
 		SPRITE::draw_Paralax();
 
 		DrawRectangle(0, 0, 
-			static_cast<int>(PROGRAM_DATA::screenWidth), 
-			static_cast<int>(PROGRAM_DATA::screenHeight), 
+			static_cast<int>(PROGRAM_DATA::screen_Width), 
+			static_cast<int>(PROGRAM_DATA::screen_Height), 
 			Color{ 0, 0, 0, 125 });
 
 		DrawTextPro(font, "Developed by: Lucio Piccioni",
-			Vector2{ (PROGRAM_DATA::screenWidth - MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).x) * 0.5f,
+			Vector2{ (PROGRAM_DATA::screen_Width - MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).x) * 0.5f,
 			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).y },
 			Vector2{ 0, 0 },
 			0,
@@ -130,7 +130,7 @@ namespace CREDITS
 			WHITE);
 
 		Vector2 myButton =
-			Vector2{ (PROGRAM_DATA::screenWidth - BUTTON::width) * 0.5f,
+			Vector2{ (PROGRAM_DATA::screen_Width - BUTTON::width) * 0.5f,
 			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).y * 2 };
 
 		float startX = 100;

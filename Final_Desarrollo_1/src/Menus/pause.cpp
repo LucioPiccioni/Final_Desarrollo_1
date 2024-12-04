@@ -15,8 +15,8 @@ namespace PAUSE
 
 	void init()
 	{
-		float startX = (PROGRAM_DATA::screenWidth - BUTTON::width) / 2;
-		float startY = (PROGRAM_DATA::screenHeight - BUTTON::height) - (BUTTON::height * buttonCount + BUTTON::spacing * (buttonCount - 1));
+		float startX = (PROGRAM_DATA::screen_Width - BUTTON::width) / 2;
+		float startY = (PROGRAM_DATA::screen_Height - BUTTON::height) - (BUTTON::height * buttonCount + BUTTON::spacing * (buttonCount - 1));
 
 
 		buttons[0].option = PROGRAM_MANAGER::Program_State::GAMEPLAY;
@@ -84,15 +84,15 @@ namespace PAUSE
 
 		Vector2 titlePos =
 		{
-			(PROGRAM_DATA::screenWidth) / 2 - MeasureTextEx(font, "Pause", BUTTON::titlesFontSize, 2).x / 2,
-			(PROGRAM_DATA::screenHeight) / 5
+			(PROGRAM_DATA::screen_Width) / 2 - MeasureTextEx(font, "Pause", BUTTON::titlesFontSize, 2).x / 2,
+			(PROGRAM_DATA::screen_Height) / 5
 		};
 
 		Color pastelPurple = { 214, 196, 224, 255 };
 
 		DrawRectangle(0, 0,
-			static_cast<int>(PROGRAM_DATA::screenWidth),
-			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
+			static_cast<int>(PROGRAM_DATA::screen_Width),
+			static_cast<int>(PROGRAM_DATA::screen_Height), Color{ 0, 0, 0, 125 });
 
 		DrawTextEx(font, "Pause", titlePos, BUTTON::titlesFontSize, 2, pastelPurple);
 

@@ -69,8 +69,8 @@ namespace MAIN_MENU
 	{
 		SPRITE::draw_Paralax();
 
-		DrawRectangle(0, 0, static_cast<int>(PROGRAM_DATA::screenWidth),
-			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
+		DrawRectangle(0, 0, static_cast<int>(PROGRAM_DATA::screen_Width),
+			static_cast<int>(PROGRAM_DATA::screen_Height), Color{ 0, 0, 0, 125 });
 
 		DrawTextEx(font, "v0.3", Vector2{ 0, 0 }, 20, 0, WHITE);
 
@@ -78,7 +78,7 @@ namespace MAIN_MENU
 
 		DrawTextPro(font,
 			title.c_str(),
-			Vector2{ (PROGRAM_DATA::screenWidth - MeasureTextEx(font, title.c_str(), BUTTON::titlesFontSize, 0).x) * 0.5f,
+			Vector2{ (PROGRAM_DATA::screen_Width - MeasureTextEx(font, title.c_str(), BUTTON::titlesFontSize, 0).x) * 0.5f,
 					 MeasureTextEx(font, title.c_str(), BUTTON::titlesFontSize, 0).y * 0.5f },
 			Vector2{ 0, 0 },
 			0, BUTTON::titlesFontSize,
@@ -90,19 +90,19 @@ namespace MAIN_MENU
 			BUTTON::drawButton(buttons[i], font);
 		}
 
-		DrawText("Hold Left/Down to lower volume,", 10, static_cast<int>(PROGRAM_DATA::screenHeight) - 60, 14, WHITE);
-		DrawText("Right/Up to increase volume", 10, static_cast<int>(PROGRAM_DATA::screenHeight) - 40, 14, WHITE);
+		DrawText("Hold Left/Down to lower volume,", 10, static_cast<int>(PROGRAM_DATA::screen_Height) - 60, 14, WHITE);
+		DrawText("Right/Up to increase volume", 10, static_cast<int>(PROGRAM_DATA::screen_Height) - 40, 14, WHITE);
 
 		int volumePercentage = static_cast<int>(SOUND_TRACKS::volume * 100);
 		DrawText(("Volume: " + std::to_string(volumePercentage) + "%").c_str(), 10,
-			static_cast<int>(PROGRAM_DATA::screenHeight) - 20, 14, WHITE);
+			static_cast<int>(PROGRAM_DATA::screen_Height) - 20, 14, WHITE);
 	}
 
 
 	void init()
 	{
-		float startX = (PROGRAM_DATA::screenWidth - BUTTON::width) / 2;
-		float startY = (PROGRAM_DATA::screenHeight - BUTTON::height) - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1));
+		float startX = (PROGRAM_DATA::screen_Width - BUTTON::width) / 2;
+		float startY = (PROGRAM_DATA::screen_Height - BUTTON::height) - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1));
 
 		for (int i = 0; i < maxButtons; i++)
 		{

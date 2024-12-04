@@ -15,6 +15,7 @@ namespace SPRITE
 		Texture2D player_Jump;
 		Texture2D player_Run;
 
+		Texture2D star;
 		Texture2D platform;
 
 		Texture2D space;

@@ -19,8 +19,8 @@ namespace CONFIRM_EXIT
 		float startY;
 
 		startX = (
-			PROGRAM_DATA::screenWidth -BUTTON::width) * 0.5f;
-		startY = (PROGRAM_DATA::screenHeight - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1))) / 2;
+			PROGRAM_DATA::screen_Width -BUTTON::width) * 0.5f;
+		startY = (PROGRAM_DATA::screen_Height - (BUTTON::height * maxButtons + BUTTON::spacing * (maxButtons - 1))) / 2;
 
 		button[0].option = PROGRAM_MANAGER::Program_State::CONFIRM_EXIT;
 		button[1].option = PROGRAM_MANAGER::Program_State::CANCEL_EXIT;
@@ -101,12 +101,12 @@ namespace CONFIRM_EXIT
 		SPRITE::draw_Paralax();
 
 		DrawRectangle(0, 0, 
-			static_cast<int>(PROGRAM_DATA::screenWidth), 
-			static_cast<int>(PROGRAM_DATA::screenHeight), 
+			static_cast<int>(PROGRAM_DATA::screen_Width), 
+			static_cast<int>(PROGRAM_DATA::screen_Height), 
 			Color{ 0, 0, 0, 225 });
 
 		DrawTextEx(font, "Are you sure you want to exit?",
-			Vector2{ static_cast<float>(PROGRAM_DATA::screenWidth) / 2 - MeasureTextEx(font, "Are you sure you want to exit?", BUTTON::textFontSize, 0).x / 2, static_cast<float>(PROGRAM_DATA::screenHeight / 4) },
+			Vector2{ static_cast<float>(PROGRAM_DATA::screen_Width) / 2 - MeasureTextEx(font, "Are you sure you want to exit?", BUTTON::textFontSize, 0).x / 2, static_cast<float>(PROGRAM_DATA::screen_Height / 4) },
 			BUTTON::textFontSize, 0, RED);
 
 		for (int i = 0; i < maxButtons; i++)

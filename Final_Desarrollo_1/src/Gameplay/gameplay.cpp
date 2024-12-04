@@ -11,6 +11,7 @@
 
 #include "Entities/player.h"
 #include "Entities/platform.h"
+#include "Entities/star.h"
 
 namespace GAMEPLAY
 {
@@ -21,6 +22,8 @@ namespace GAMEPLAY
 	int lastActiveIndex = 0;
 
 	PLATFORM::Platform platform[maxPlatform];
+
+	STAR::Star star;
 
 	void init()
 	{
@@ -41,10 +44,10 @@ namespace GAMEPLAY
 
 		platform[0] = PLATFORM::spawner();
 
-		platform[0].rect_Pos.x = (PROGRAM_DATA::screenWidth - platform[0].rect_Pos.width) * 0.5f;
-		platform[0].rect_Pos.y = PROGRAM_DATA::screenHeight - PLAYER::player.height - 600;
+		platform[0].rect_Pos.x = (PROGRAM_DATA::screen_Width - platform[0].rect_Pos.width) * 0.5f;
+		platform[0].rect_Pos.y = PROGRAM_DATA::screen_Height - PLAYER::player.height - 600;
 
-		PLAYER::player.pos = { (PROGRAM_DATA::screenWidth - PLAYER::player.width) * 0.5f,
+		PLAYER::player.pos = { (PROGRAM_DATA::screen_Width - PLAYER::player.width) * 0.5f,
 						platform[0].rect_Pos.y - PLAYER::player.height };
 
 		PLAYER::player.platform_Standing = nullptr;
@@ -53,6 +56,8 @@ namespace GAMEPLAY
 
 		PLATFORM::speed_y = PLATFORM::min_Speed.y;
 		PLATFORM::actual_length = PLATFORM::max_length;
+
+		star = STAR::spawner();
 	}
 
 	void update(PROGRAM_MANAGER::State_Manager& state_Manager)
@@ -79,6 +84,17 @@ namespace GAMEPLAY
 		activate_New_Platform();
 
 		deactivate_Platform();
+
+		if (star.active && PLAYER::collide_Width_Star(star.rect))
+		{
+			star.active = false;
+			PLAYER::player.points += STAR::star_Point_Given;
+
+			StopSound(SOUND::gameSounds.point);
+			PlaySound(SOUND::gameSounds.point);
+
+			star = STAR::spawner();
+		}
 
 		if (did_Player_Died())
 		{
@@ -128,12 +144,12 @@ namespace GAMEPLAY
 
 	bool did_Player_Died()
 	{
-		return (PLAYER::player.pos.y > PROGRAM_DATA::screenHeight);
+		return (PLAYER::player.pos.y > PROGRAM_DATA::screen_Height);
 	}
 
 	void activate_New_Platform()
 	{
-		if (platform[lastActiveIndex].active && platform[lastActiveIndex].rect_Pos.y > PROGRAM_DATA::screenHeight * 0.5f)
+		if (platform[lastActiveIndex].active && platform[lastActiveIndex].rect_Pos.y > PROGRAM_DATA::screen_Height * 0.5f)
 		{
 			int nextIndex = (lastActiveIndex + 1) % maxPlatform;
 
@@ -150,7 +166,7 @@ namespace GAMEPLAY
 	{
 		for (int i = 0; i < maxPlatform; i++)
 		{
-			if (platform[i].active && platform[i].rect_Pos.y > PROGRAM_DATA::screenHeight)
+			if (platform[i].active && platform[i].rect_Pos.y > PROGRAM_DATA::screen_Height)
 			{
 				platform[i].active = false;
 				break;
@@ -162,6 +178,8 @@ namespace GAMEPLAY
 	void draw(Font font)
 	{
 		SPRITE::draw_Paralax();
+
+		STAR::draw(star.rect);
 
 		PLAYER::draw();
 

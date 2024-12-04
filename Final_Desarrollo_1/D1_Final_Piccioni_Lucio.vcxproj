@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\Entities\platform.cpp" />
     <ClCompile Include="src\Entities\player.cpp" />
+    <ClCompile Include="src\Entities\star.cpp" />
     <ClCompile Include="src\Gameplay\gameplay.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menus\confirm_exit.cpp" />
@@ -40,6 +41,7 @@
   <ItemGroup>
     <ClInclude Include="src\Entities\platform.h" />
     <ClInclude Include="src\Entities\player.h" />
+    <ClInclude Include="src\Entities\star.h" />
     <ClInclude Include="src\Gameplay\gameplay.h" />
     <ClInclude Include="src\Menus\confirm_exit.h" />
     <ClInclude Include="src\Menus\credits.h" />

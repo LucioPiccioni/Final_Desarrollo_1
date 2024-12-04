@@ -23,7 +23,7 @@ namespace PLATFORM
 		newPlatform.rect_Pos.height = height;
 
 		newPlatform.rect_Pos.x = static_cast<float>(
-			GetRandomValue(0, static_cast<int>(PROGRAM_DATA::screenWidth - newPlatform.rect_Pos.width)));
+			GetRandomValue(0, static_cast<int>(PROGRAM_DATA::screen_Width - newPlatform.rect_Pos.width)));
 
 		newPlatform.speed.y = PLATFORM::speed_y;
 
@@ -81,7 +81,7 @@ namespace PLATFORM
 
 	void changeDirectionX(Platform& platform)
 	{
-		if (platform.rect_Pos.x + platform.rect_Pos.width > PROGRAM_DATA::screenWidth)
+		if (platform.rect_Pos.x + platform.rect_Pos.width > PROGRAM_DATA::screen_Width)
 		{
 			platform.right_Movement = false;
 			platform.left_Movement = true;
@@ -96,9 +96,7 @@ namespace PLATFORM
 	void draw(Rectangle rect)
 	{
 #ifdef _DEBUG
-
 		DrawRectangleRec(rect, YELLOW);
-
 #endif
 
 		DrawTexturePro(

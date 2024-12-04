@@ -60,5 +60,7 @@ namespace PLAYER
 
 	bool Is_on_Platform(Rectangle platform);
 
+	bool collide_Width_Star(Rectangle star);
+
 	void draw();
 }
