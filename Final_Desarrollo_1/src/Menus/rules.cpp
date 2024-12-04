@@ -18,7 +18,7 @@ namespace RULES
 		button.text = "Menu";
 
 		button.rect = { ( PROGRAM_DATA::screen_Width - BUTTON::width) * 0.5f ,
-			PROGRAM_DATA::screen_Height - BUTTON::height, BUTTON::width,  BUTTON::height };
+			PROGRAM_DATA::screen_Height - BUTTON::height * 2, BUTTON::width,  BUTTON::height };
 
 		button.option = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 	}
