@@ -8,61 +8,61 @@ namespace SOUND_TRACKS
 
 	void init()
 	{
-		music.mainMenu = LoadMusicStream("res/music/Louie's Lullaby - Harris Cole.mp3");
-		music.gamePlay = LoadMusicStream("res/music/Breathtaking - Purrple Cat.mp3");
-		music.gameOver = LoadMusicStream("res/music/JEN - QUIET NIGHTS - soulmate.mp3");
+		music.main_Menu = LoadMusicStream("res/music/Louie's Lullaby - Harris Cole.mp3");
+		music.gameplay = LoadMusicStream("res/music/Breathtaking - Purrple Cat.mp3");
+		music.game_Over = LoadMusicStream("res/music/JEN - QUIET NIGHTS - soulmate.mp3");
 	}
 
 	void unload()
 	{
-		UnloadMusicStream(music.mainMenu);
-		UnloadMusicStream(music.gamePlay);
-		UnloadMusicStream(music.gameOver);
+		UnloadMusicStream(music.main_Menu);
+		UnloadMusicStream(music.gameplay);
+		UnloadMusicStream(music.game_Over);
 	}
 
 	void MusicControl(PROGRAM_MANAGER::State_Manager& state_Manager)
 	{
 		const int AllMusic = 2;
 
-		Music* actualMusic = nullptr;
-		Music* stopMusic[AllMusic] = { nullptr };
+		Music* actual_Music = nullptr;
+		Music* stop_Music[AllMusic] = { nullptr };
 
 		switch (state_Manager.actual)
 		{
 		case PROGRAM_MANAGER::Program_State::MAIN_MENU:
 
-			MainMenuOrganization(actualMusic, stopMusic);
+			MainMenuOrganization(actual_Music, stop_Music);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::GAMEPLAY:
 		case PROGRAM_MANAGER::Program_State::PAUSE:
 
-			GamePlayOrganization(actualMusic, stopMusic);
+			GamePlayOrganization(actual_Music, stop_Music);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::GAME_OVER:
 
-			GameOverOrganization(actualMusic, stopMusic);
+			GameOverOrganization(actual_Music, stop_Music);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::RULES:
 
-			MainMenuOrganization(actualMusic, stopMusic);
+			MainMenuOrganization(actual_Music, stop_Music);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::CREDITS:
 
-			MainMenuOrganization(actualMusic, stopMusic);
+			MainMenuOrganization(actual_Music, stop_Music);
 			break;
 
 		case PROGRAM_MANAGER::Program_State::WANT_TO_EXIT:
 
 			if (state_Manager.previus == PROGRAM_MANAGER::Program_State::MAIN_MENU)
-				MainMenuOrganization(actualMusic, stopMusic);
+				MainMenuOrganization(actual_Music, stop_Music);
 			else if (state_Manager.previus == PROGRAM_MANAGER::Program_State::GAME_OVER)
-				GameOverOrganization(actualMusic, stopMusic);
+				GameOverOrganization(actual_Music, stop_Music);
 			else
-				GamePlayOrganization(actualMusic, stopMusic);
+				GamePlayOrganization(actual_Music, stop_Music);
 			break;
 
 		default:
@@ -71,45 +71,45 @@ namespace SOUND_TRACKS
 
 		for (int i = 0; i < AllMusic; i++)
 		{
-			if (stopMusic[i] != nullptr)
+			if (stop_Music[i] != nullptr)
 			{
-				if (IsMusicStreamPlaying(*stopMusic[i]))
-					StopMusicStream(*stopMusic[i]);
+				if (IsMusicStreamPlaying(*stop_Music[i]))
+					StopMusicStream(*stop_Music[i]);
 			}
 		}
 
-		if (actualMusic != nullptr)
+		if (actual_Music != nullptr)
 		{
-			SetMusicVolume(*actualMusic, volume);
+			SetMusicVolume(*actual_Music, volume);
 
-			if (!IsMusicStreamPlaying(*actualMusic))
-				PlayMusicStream(*actualMusic);
+			if (!IsMusicStreamPlaying(*actual_Music))
+				PlayMusicStream(*actual_Music);
 
-			UpdateMusicStream(*actualMusic);
+			UpdateMusicStream(*actual_Music);
 		}
 	}
 
-	void MainMenuOrganization(Music*& actualMusic, Music* stopMusic[])
+	void MainMenuOrganization(Music*& actual_Music, Music* stop_Music[])
 	{
-		actualMusic = &music.mainMenu;
+		actual_Music = &music.main_Menu;
 
-		stopMusic[0] = &music.gamePlay;
-		stopMusic[1] = &music.gameOver;
+		stop_Music[0] = &music.gameplay;
+		stop_Music[1] = &music.game_Over;
 	}
 
-	void GamePlayOrganization(Music*& actualMusic, Music* stopMusic[])
+	void GamePlayOrganization(Music*& actual_Music, Music* stop_Music[])
 	{
-		actualMusic = &music.gamePlay;
+		actual_Music = &music.gameplay;
 
-		stopMusic[0] = &music.mainMenu;
-		stopMusic[1] = &music.gameOver;
+		stop_Music[0] = &music.main_Menu;
+		stop_Music[1] = &music.game_Over;
 	}
 
-	void GameOverOrganization(Music*& actualMusic, Music* stopMusic[])
+	void GameOverOrganization(Music*& actual_Music, Music* stop_Music[])
 	{
-		actualMusic = &music.gameOver;
+		actual_Music = &music.game_Over;
 
-		stopMusic[0] = &music.mainMenu;
-		stopMusic[1] = &music.gamePlay;
+		stop_Music[0] = &music.main_Menu;
+		stop_Music[1] = &music.gameplay;
 	}
 }
