@@ -7,7 +7,7 @@ namespace PLATFORM
 	struct Platform
 	{
 		Rectangle rect_Pos = {};
-		Rectangle rectDest = {};
+		Rectangle rect_Dest = {};
 
 		Vector2 speed = {};
 

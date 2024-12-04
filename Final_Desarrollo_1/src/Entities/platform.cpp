@@ -48,10 +48,10 @@ namespace PLATFORM
 
 		newPlatform.rect_Pos.y = -newPlatform.rect_Pos.height;
 
-		newPlatform.rectDest.x = 0;
-		newPlatform.rectDest.y = 0;
-		newPlatform.rectDest.width = newPlatform.rect_Pos.width;
-		newPlatform.rectDest.width = newPlatform.rect_Pos.height;
+		newPlatform.rect_Dest.x = 0;
+		newPlatform.rect_Dest.y = 0;
+		newPlatform.rect_Dest.width = newPlatform.rect_Pos.width;
+		newPlatform.rect_Dest.width = newPlatform.rect_Pos.height;
 
 		return newPlatform;
 	}
