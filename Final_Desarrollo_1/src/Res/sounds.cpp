@@ -8,10 +8,10 @@ namespace SOUND
 
 	void init()
 	{
-		game_Sounds.button = LoadSound("res/soundEffects/button.wav");
-		game_Sounds.jump  = LoadSound("res/soundEffects/jump.wav");
-		game_Sounds.point = LoadSound("res/soundEffects/point.wav");
-		game_Sounds.die = LoadSound("res/soundEffects/loose.wav");
+		game_Sounds.button = LoadSound("res/sound_Effects/button.wav");
+		game_Sounds.jump  = LoadSound("res/sound_Effects/jump.wav");
+		game_Sounds.point = LoadSound("res/sound_Effects/point.wav");
+		game_Sounds.die = LoadSound("res/sound_Effects/loose.wav");
 	}
 
 	void volumeManager()
