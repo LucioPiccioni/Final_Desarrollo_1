@@ -72,12 +72,14 @@ namespace MAIN_MENU
 		DrawRectangle(0, 0, static_cast<int>(PROGRAM_DATA::screenWidth),
 			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
 
-		DrawText("v1.0", 0, 0, 20, WHITE);
+		DrawTextEx(font, "v0.3", Vector2{ 0, 0 }, 20, 0, WHITE);
+
+		std::string title = "Stellar Jumps";
 
 		DrawTextPro(font,
-			"The Spark",
-			Vector2{ (PROGRAM_DATA::screenWidth - MeasureTextEx(font, "The Spark", BUTTON::titlesFontSize, 0).x) * 0.5f,
-					 MeasureTextEx(font, "The Spark", BUTTON::titlesFontSize, 0).y * 0.5f },
+			title.c_str(),
+			Vector2{ (PROGRAM_DATA::screenWidth - MeasureTextEx(font, title.c_str(), BUTTON::titlesFontSize, 0).x) * 0.5f,
+					 MeasureTextEx(font, title.c_str(), BUTTON::titlesFontSize, 0).y * 0.5f },
 			Vector2{ 0, 0 },
 			0, BUTTON::titlesFontSize,
 			0,
