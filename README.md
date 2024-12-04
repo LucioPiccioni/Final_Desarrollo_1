@@ -1,4 +1,4 @@
-# **Space Jump - Proyecto Final de Desarrollo I**
+# **Stellar Jump - Proyecto Final de Desarrollo I**
 
 Este proyecto es el trabajo final de la materia **Desarrollo I**, desarrollado en **C++** utilizando la biblioteca gráfica **raylib**. Es un juego inspirado en **Doodle Jump**, pero ambientado en el espacio, con mecánicas únicas que ofrecen un desafío emocionante.
 
