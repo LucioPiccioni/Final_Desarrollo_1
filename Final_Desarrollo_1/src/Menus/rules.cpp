@@ -68,24 +68,26 @@ namespace RULES
 		float spacing = 40;
 
 		DrawTextPro(font, "Gameplay:", Vector2{ textX, textY }, Vector2{ 0, 0 }, 0, 30, 0, WHITE);
-		DrawTextPro(font, "Avoid obstacles and survive as long as possible.",
+		DrawTextPro(font, "Jump through platforms and survive as long as possible.",
 			Vector2{ textX + 20, textY + spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
 
-		DrawTextPro(font, "Controls:", Vector2{ textX, textY + 2 * spacing }, Vector2{ 0, 0 }, 0, 30, 0, WHITE);
-		DrawTextPro(font, "Single-player: Press SPACE to jump.",
-			Vector2{ textX + 20, textY + 3 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
-		DrawTextPro(font, "Two-player: Player One jumps with W, Player Two with UP arrow.",
+		DrawTextPro(font, "Controls:", Vector2{ textX, textY + 3 * spacing }, Vector2{ 0, 0 }, 0, 30, 0, WHITE);
+		DrawTextPro(font, "SPACE / W / Up Arrow: To jump.",
 			Vector2{ textX + 20, textY + 4 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
-
-		DrawTextPro(font, "Difficulty Increase:", Vector2{ textX, textY + 5 * spacing }, Vector2{ 0, 0 }, 0, 30, 0, WHITE);
-		DrawTextPro(font, "Every Three obstacles passed, the difficulty increases:",
+		DrawTextPro(font, "A / Left Arrow: To move to Left.",
+			Vector2{ textX + 20, textY + 5 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
+		DrawTextPro(font, "D / Right Arrow: To move to Right.",
 			Vector2{ textX + 20, textY + 6 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
-		DrawTextPro(font, "ONE. Obstacle speed increases by TEN Percent.",
-			Vector2{ textX + 20, textY + 7 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
-		DrawTextPro(font, "TWO. Spacing between obstacles decreases by TEN Percent.",
-			Vector2{ textX + 20, textY + 8 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
-		DrawTextPro(font, "THREE. Spawn rate of obstacles increases by TEN Percent.",
+
+		DrawTextPro(font, "Difficulty Increase:", Vector2{ textX, textY + 8 * spacing }, Vector2{ 0, 0 }, 0, 30, 0, WHITE);
+		DrawTextPro(font, "Every Five points, the difficulty increases:",
 			Vector2{ textX + 20, textY + 9 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
+		DrawTextPro(font, "* Platform speed increases by 15 %.",
+			Vector2{ textX + 20, textY + 10 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
+		DrawTextPro(font, "* Gravity force is increases by 15 %.",
+			Vector2{ textX + 20, textY + 11 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
+		DrawTextPro(font, "* The Spacing of the platforms decreases by 5 %.",
+			Vector2{ textX + 20, textY + 12 * spacing }, Vector2{ 0, 0 }, 0, 20, 0, WHITE);
 
 		BUTTON::drawButton(button, font);
 	}

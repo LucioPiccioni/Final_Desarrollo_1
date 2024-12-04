@@ -7,6 +7,8 @@
 #include "Program/Utilities/button.h"
 
 #include "Res/sprites.h"
+#include "Res/sounds.h"
+
 #include "Entities/player.h"
 #include "Entities/platform.h"
 
@@ -80,6 +82,9 @@ namespace GAMEPLAY
 
 		if (did_Player_Died())
 		{
+			StopSound(SOUND::gameSounds.die);
+			PlaySound(SOUND::gameSounds.die);
+
 			init();
 			state_Manager.actual = PROGRAM_MANAGER::Program_State::GAME_OVER;
 		}
@@ -174,6 +179,9 @@ namespace GAMEPLAY
 	{
 		if (!plat.counted_Point)
 		{
+			StopSound(SOUND::gameSounds.point);
+			PlaySound(SOUND::gameSounds.point);
+
 			PLAYER::player.points++;
 			plat.counted_Point = true;
 

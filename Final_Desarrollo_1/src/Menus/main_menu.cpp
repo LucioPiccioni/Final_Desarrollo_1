@@ -72,7 +72,7 @@ namespace MAIN_MENU
 		DrawRectangle(0, 0, static_cast<int>(PROGRAM_DATA::screenWidth),
 			static_cast<int>(PROGRAM_DATA::screenHeight), Color{ 0, 0, 0, 125 });
 
-		DrawText("v0.5", 0, 0, 20, WHITE);
+		DrawText("v1.0", 0, 0, 20, WHITE);
 
 		DrawTextPro(font,
 			"The Spark",

@@ -10,20 +10,21 @@
 
 namespace CREDITS
 {
-	const int maxCredits = 8;
+	const int maxCredits = 9;
 
 	BUTTON::Button button = {};
 
 	Credit credits[maxCredits] =
 	{
 		{"", "https://kapnack.itch.io", {}},
-		{"Cgman \"Wind VFX\"", "http://spritefx.blogspot.com/2013/04/sprite-wind.html", {}},
-		{"Purrple Cat \"Breathtaking\"", "https://www.youtube.com/watch?v=wvJgGh1EpaU", {}},
-		{"Harris Cole \"Louie's Lullaby\"", "https://www.youtube.com/watch?v=lraoB66OW1s", {}},
-		{"Chiptone \"Sound Effects\"", "https://sfbgames.itch.io/chiptone", {}},
-		{"Waters \"City Background Parallax\"", "https://waterscreate.itch.io/city-background-parallax", {}},
-		{"Pixeleart \"Paper plane with pixel art style\"", "https://www.freepik.com/premium-vector/paper-plane-with-pixel-art-style_18019937.htm", {}},
-		{"Jen \"Quiet Nights\"", "https://www.youtube.com/watch?v=d_-ECIjWTHY", {}}
+		{"Pixel Frog \"Virtual Boy\" - Character.", "https://pixelfrog-assets.itch.io/pixel-adventure-1", {}},
+		{"Plrang Art \"Iron stone meteorite or coal surface\" - Platform.", "http://spritefx.blogspot.com/2013/04/sprite-wind.html", {}},
+		{"DinVStudio \"Dynamic space background\" - Paralax.", "https://dinvstudio.itch.io/dynamic-space-background-lite-free", {}},
+		{"Chiptone \"Sound Effects\".", "https://sfbgames.itch.io/chiptone", {}},
+		{"Purrple Cat \"Breathtaking\" - Gameplay music.", "https://www.youtube.com/watch?v=wvJgGh1EpaU", {}},
+		{"Harris Cole \"Louie's Lullaby\" - Credits Music.", "https://www.youtube.com/watch?v=lraoB66OW1s", {}},
+		{"Jen \"Quiet Nights\" - Game Over music.", "https://www.youtube.com/watch?v=d_-ECIjWTHY", {}},
+		{"The Fontry \"JSL Space Gothic\" - Font.", "https://thefontry.com/jlsdatagothic/", {}}
 	};
 
 	void init()
@@ -142,7 +143,7 @@ namespace CREDITS
 		{
 			DrawTextPro(font, credits[i].text,
 				Vector2{ startX, startY + i * (30 + spacing) },
-				Vector2{ 0, 0 }, 0, BUTTON::textFontSize * 0.70,
+				Vector2{ 0, 0 }, 0, BUTTON::textFontSize * 0.5f,
 				0,
 				WHITE);
 

@@ -3,7 +3,9 @@
 #include "raylib.h"
 
 #include "Program/program_Data.h"
+
 #include "Res/sprites.h"
+#include "Res/sounds.h"
 
 namespace PLAYER
 {
@@ -81,6 +83,9 @@ namespace PLAYER
 
 		if ((IsKeyPressed(KEY_W) || IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_SPACE)) && player.on_Floor)
 		{
+			StopSound(SOUND::gameSounds.jump);
+			PlaySound(SOUND::gameSounds.jump);
+
 			player.speed.y = jump_Force;
 			player.on_Floor = false;
 			player.platform_Standing = nullptr;
