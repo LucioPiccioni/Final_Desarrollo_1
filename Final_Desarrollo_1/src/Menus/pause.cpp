@@ -57,8 +57,8 @@ namespace PAUSE
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 				{
-					StopSound(SOUND::gameSounds.button);
-					PlaySound(SOUND::gameSounds.button);
+					StopSound(SOUND::game_Sounds.button);
+					PlaySound(SOUND::game_Sounds.button);
 					state_Manager.actual = buttons[i].option;
 				}
 			}
@@ -84,7 +84,7 @@ namespace PAUSE
 
 		Vector2 titlePos =
 		{
-			(PROGRAM_DATA::screen_Width) / 2 - MeasureTextEx(font, "Pause", BUTTON::titlesFontSize, 2).x / 2,
+			(PROGRAM_DATA::screen_Width) / 2 - MeasureTextEx(font, "Pause", BUTTON::titles_Font_Size, 2).x / 2,
 			(PROGRAM_DATA::screen_Height) / 5
 		};
 
@@ -94,7 +94,7 @@ namespace PAUSE
 			static_cast<int>(PROGRAM_DATA::screen_Width),
 			static_cast<int>(PROGRAM_DATA::screen_Height), Color{ 0, 0, 0, 125 });
 
-		DrawTextEx(font, "Pause", titlePos, BUTTON::titlesFontSize, 2, pastelPurple);
+		DrawTextEx(font, "Pause", titlePos, BUTTON::titles_Font_Size, 2, pastelPurple);
 
 		for (int i = 0; i < buttonCount; i++)
 		{

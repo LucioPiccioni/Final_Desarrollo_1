@@ -52,8 +52,8 @@ namespace GAME_OVER
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 				{
-					StopSound(SOUND::gameSounds.button);
-					PlaySound(SOUND::gameSounds.button);
+					StopSound(SOUND::game_Sounds.button);
+					PlaySound(SOUND::game_Sounds.button);
 					state_Manager.actual = buttons[i].option;
 				}
 			}
@@ -80,7 +80,7 @@ namespace GAME_OVER
 
 	void draw(Font font)
 	{
-		Vector2 gameOverTextSize = MeasureTextEx(font, "GAME OVER", BUTTON::titlesFontSize, 0);
+		Vector2 gameOverTextSize = MeasureTextEx(font, "GAME OVER", BUTTON::titles_Font_Size, 0);
 		Vector2 gameOverPos = { (static_cast<float>(PROGRAM_DATA::screen_Width) - gameOverTextSize.x) * 0.5f, gameOverTextSize.y };
 
 		SPRITE::draw_Paralax();
@@ -89,7 +89,7 @@ namespace GAME_OVER
 			static_cast<int>(PROGRAM_DATA::screen_Width), 
 			static_cast<int>(PROGRAM_DATA::screen_Height), Color{ 0, 0, 0, 125 });
 
-		DrawTextEx(font, "GAME OVER", gameOverPos, BUTTON::titlesFontSize, 0, RED);
+		DrawTextEx(font, "GAME OVER", gameOverPos, BUTTON::titles_Font_Size, 0, RED);
 
 		for (int i = 0; i < maxButtons; i++)
 		{

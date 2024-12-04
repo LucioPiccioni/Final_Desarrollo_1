@@ -48,7 +48,7 @@ namespace PROGRAM
 
 		InitAudioDevice();
 
-		font = LoadFontEx("res/Fonts/JLSSpaceGothicR_NC.otf", static_cast<int>(BUTTON::titlesFontSize), 0, 0);
+		font = LoadFontEx("res/Fonts/JLSSpaceGothicR_NC.otf", static_cast<int>(BUTTON::titles_Font_Size), 0, 0);
 
 		initMenus();
 	}

@@ -40,8 +40,8 @@ namespace RULES
 
 			if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 			{
-				StopSound(SOUND::gameSounds.button);
-				PlaySound(SOUND::gameSounds.button);
+				StopSound(SOUND::game_Sounds.button);
+				PlaySound(SOUND::game_Sounds.button);
 				program_Manager.actual = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 			}
 		}

@@ -15,7 +15,7 @@ namespace CREDITS
 
 	void update(PROGRAM_MANAGER::Program_State& program_State);
 
-	void drawCreditButton(Rectangle rect, const char* text, Font font, Color color, Color outline, float fontSize);
+	void drawCreditButton(Rectangle rect, const char* text, Font font, Color color, Color outline, float font_Size);
 
 	void draw(Font font);
 }

@@ -90,16 +90,16 @@ namespace GAMEPLAY
 			star.active = false;
 			PLAYER::player.points += STAR::star_Point_Given;
 
-			StopSound(SOUND::gameSounds.point);
-			PlaySound(SOUND::gameSounds.point);
+			StopSound(SOUND::game_Sounds.point);
+			PlaySound(SOUND::game_Sounds.point);
 
 			star = STAR::spawner();
 		}
 
 		if (did_Player_Died())
 		{
-			StopSound(SOUND::gameSounds.die);
-			PlaySound(SOUND::gameSounds.die);
+			StopSound(SOUND::game_Sounds.die);
+			PlaySound(SOUND::game_Sounds.die);
 
 			init();
 			state_Manager.actual = PROGRAM_MANAGER::Program_State::GAME_OVER;
@@ -190,15 +190,15 @@ namespace GAMEPLAY
 		}
 
 		std::string text = "Points: " + std::to_string(PLAYER::player.points) + ".";
-		DrawTextEx(font, text.c_str(), Vector2{ 0,0 }, BUTTON::scoreFontSize, 0, YELLOW);
+		DrawTextEx(font, text.c_str(), Vector2{ 0,0 }, BUTTON::score_Font_Size, 0, YELLOW);
 	}
 
 	void update_Player_Points(PLATFORM::Platform& plat)
 	{
 		if (!plat.counted_Point)
 		{
-			StopSound(SOUND::gameSounds.point);
-			PlaySound(SOUND::gameSounds.point);
+			StopSound(SOUND::game_Sounds.point);
+			PlaySound(SOUND::game_Sounds.point);
 
 			PLAYER::player.points++;
 			plat.counted_Point = true;

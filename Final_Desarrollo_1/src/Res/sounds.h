@@ -11,7 +11,7 @@ namespace SOUND
 		Sound die = {};
 	};
 
-	extern GameSounds gameSounds;
+	extern GameSounds game_Sounds;
 
 	void init();
 

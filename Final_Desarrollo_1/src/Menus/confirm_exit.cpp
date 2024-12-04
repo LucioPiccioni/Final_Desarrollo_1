@@ -67,8 +67,8 @@ namespace CONFIRM_EXIT
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 				{
-					StopSound(SOUND::gameSounds.button);
-					PlaySound(SOUND::gameSounds.button);
+					StopSound(SOUND::game_Sounds.button);
+					PlaySound(SOUND::game_Sounds.button);
 					state_manager.actual = button[i].option;
 				}
 			}
@@ -106,8 +106,8 @@ namespace CONFIRM_EXIT
 			Color{ 0, 0, 0, 225 });
 
 		DrawTextEx(font, "Are you sure you want to exit?",
-			Vector2{ static_cast<float>(PROGRAM_DATA::screen_Width) / 2 - MeasureTextEx(font, "Are you sure you want to exit?", BUTTON::textFontSize, 0).x / 2, static_cast<float>(PROGRAM_DATA::screen_Height / 4) },
-			BUTTON::textFontSize, 0, RED);
+			Vector2{ static_cast<float>(PROGRAM_DATA::screen_Width) / 2 - MeasureTextEx(font, "Are you sure you want to exit?", BUTTON::text_Font_Size, 0).x / 2, static_cast<float>(PROGRAM_DATA::screen_Height / 4) },
+			BUTTON::text_Font_Size, 0, RED);
 
 		for (int i = 0; i < maxButtons; i++)
 		{

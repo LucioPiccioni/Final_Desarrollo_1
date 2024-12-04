@@ -61,8 +61,8 @@ namespace CREDITS
 		{
 			if (CheckCollisionPointRec(mouse, credits[i].buttonRect) && IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 			{
-				StopSound(SOUND::gameSounds.button);
-				PlaySound(SOUND::gameSounds.button);
+				StopSound(SOUND::game_Sounds.button);
+				PlaySound(SOUND::game_Sounds.button);
 				OpenURL(credits[i].url);
 			}
 		}
@@ -78,8 +78,8 @@ namespace CREDITS
 
 			if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 			{
-				StopSound(SOUND::gameSounds.button);
-				PlaySound(SOUND::gameSounds.button);
+				StopSound(SOUND::game_Sounds.button);
+				PlaySound(SOUND::game_Sounds.button);
 				program_State = PROGRAM_MANAGER::Program_State::MAIN_MENU;
 			}
 		}
@@ -89,12 +89,12 @@ namespace CREDITS
 		}
 	}
 
-	void drawCreditButton(Rectangle rect, const char* text, Font font, Color color, Color outline, float fontSize)
+	void drawCreditButton(Rectangle rect, const char* text, Font font, Color color, Color outline, float font_Size)
 	{
 		DrawRectangleRec(rect, color);
 		DrawRectangleLinesEx(rect, 2, outline);
 
-		Vector2 textSize = MeasureTextEx(font, text, fontSize, 1);
+		Vector2 textSize = MeasureTextEx(font, text, font_Size, 1);
 
 		Vector2 textPosition = {
 			rect.x + (rect.width - textSize.x) / 2,
@@ -106,7 +106,7 @@ namespace CREDITS
 			textPosition,
 			Vector2{ 0, 0 },
 			0,
-			fontSize,
+			font_Size,
 			1,
 			BLACK);
 	}
@@ -122,17 +122,17 @@ namespace CREDITS
 			Color{ 0, 0, 0, 125 });
 
 		DrawTextPro(font, "Developed by: Lucio Piccioni",
-			Vector2{ (PROGRAM_DATA::screen_Width - MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).x) * 0.5f,
-			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).y },
+			Vector2{ (PROGRAM_DATA::screen_Width - MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::text_Font_Size, 0).x) * 0.5f,
+			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::text_Font_Size, 0).y },
 			Vector2{ 0, 0 },
 			0,
-			BUTTON::textFontSize,
+			BUTTON::text_Font_Size,
 			0,
 			WHITE);
 
 		Vector2 myButton =
 			Vector2{ (PROGRAM_DATA::screen_Width - BUTTON::width) * 0.5f,
-			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::textFontSize, 0).y * 2 };
+			MeasureTextEx(font, "Developed by: Lucio Piccioni", BUTTON::text_Font_Size, 0).y * 2 };
 
 		float startX = 100;
 		float startY = 150;
@@ -144,7 +144,7 @@ namespace CREDITS
 		{
 			DrawTextPro(font, credits[i].text,
 				Vector2{ startX, startY + i * (30 + spacing) },
-				Vector2{ 0, 0 }, 0, BUTTON::textFontSize * 0.5f,
+				Vector2{ 0, 0 }, 0, BUTTON::text_Font_Size * 0.5f,
 				0,
 				WHITE);
 
@@ -154,7 +154,7 @@ namespace CREDITS
 				font,
 				PURPLE,
 				WHITE,
-				BUTTON::scoreFontSize
+				BUTTON::score_Font_Size
 			);
 		}
 

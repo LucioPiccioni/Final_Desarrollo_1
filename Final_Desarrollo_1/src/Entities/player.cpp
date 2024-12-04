@@ -83,8 +83,8 @@ namespace PLAYER
 
 		if ((IsKeyPressed(KEY_W) || IsKeyPressed(KEY_UP) || IsKeyPressed(KEY_SPACE)) && player.on_Floor)
 		{
-			StopSound(SOUND::gameSounds.jump);
-			PlaySound(SOUND::gameSounds.jump);
+			StopSound(SOUND::game_Sounds.jump);
+			PlaySound(SOUND::game_Sounds.jump);
 
 			player.speed.y = jump_Force;
 			player.on_Floor = false;

@@ -27,9 +27,9 @@ namespace BUTTON
 	const float height = 60;
 	const float spacing = 20;
 
-	const float titlesFontSize = 100;
-	const float textFontSize = 40;
-	const float scoreFontSize = 30;
+	const float titles_Font_Size = 100;
+	const float text_Font_Size = 40;
+	const float score_Font_Size = 30;
 
 	void drawButton(Button button, Font font);
 	bool isButtonClicked(Vector2 mouse, Button button);

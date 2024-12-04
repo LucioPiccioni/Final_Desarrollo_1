@@ -11,7 +11,7 @@ namespace BUTTON
 		DrawRectangleRec(button.rect, button.color);
 		DrawRectangleLinesEx(button.rect, 2, button.outline);
 
-		Vector2 textSize = MeasureTextEx(font, button.text.c_str(), textFontSize, 1);
+		Vector2 textSize = MeasureTextEx(font, button.text.c_str(), text_Font_Size, 1);
 
 		Vector2 textPosition = {
 			button.rect.x + (button.rect.width - textSize.x) / 2,
@@ -23,7 +23,7 @@ namespace BUTTON
 			textPosition,
 			Vector2{ 0,0 },
 			0,
-			textFontSize,
+			text_Font_Size,
 			0,
 			BLACK);
 	}

@@ -46,8 +46,8 @@ namespace MAIN_MENU
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON))
 				{
-					StopSound(SOUND::gameSounds.button);
-					PlaySound(SOUND::gameSounds.button);
+					StopSound(SOUND::game_Sounds.button);
+					PlaySound(SOUND::game_Sounds.button);
 					state_manager.actual = buttons[i].option;
 				}
 			}
@@ -78,10 +78,10 @@ namespace MAIN_MENU
 
 		DrawTextPro(font,
 			title.c_str(),
-			Vector2{ (PROGRAM_DATA::screen_Width - MeasureTextEx(font, title.c_str(), BUTTON::titlesFontSize, 0).x) * 0.5f,
-					 MeasureTextEx(font, title.c_str(), BUTTON::titlesFontSize, 0).y * 0.5f },
+			Vector2{ (PROGRAM_DATA::screen_Width - MeasureTextEx(font, title.c_str(), BUTTON::titles_Font_Size, 0).x) * 0.5f,
+					 MeasureTextEx(font, title.c_str(), BUTTON::titles_Font_Size, 0).y * 0.5f },
 			Vector2{ 0, 0 },
-			0, BUTTON::titlesFontSize,
+			0, BUTTON::titles_Font_Size,
 			0,
 			YELLOW);
 
