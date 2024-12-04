@@ -46,22 +46,22 @@ namespace PLAYER
 
 	void animate(float deltaTime)
 	{
-		player.framesCounter += deltaTime;
+		player.frames_Counter += deltaTime;
 
 		const float frameDuration = 0.12f;
 
-		if (player.framesCounter >= frameDuration)
+		if (player.frames_Counter >= frameDuration)
 		{
-			player.framesCounter -= frameDuration;
-			player.currentFrame++;
+			player.frames_Counter -= frameDuration;
+			player.current_Frame++;
 
-			if (player.currentFrame > SPRITE::animationTotalFrames)
+			if (player.current_Frame > SPRITE::animation_Total_Frames)
 			{
-				player.currentFrame = 0;
+				player.current_Frame = 0;
 				player.animate = false;
 			}
 
-			player.frameRect.x = static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Run.width / SPRITE::animationTotalFrames);
+			player.frame_Rect.x = static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Run.width / SPRITE::animation_Total_Frames);
 		}
 	}
 
@@ -199,7 +199,7 @@ namespace PLAYER
 			sourceRect = { 0.0f, 0.0f, (player.speed.x > 0 ? 1 : -1) * static_cast<float>(SPRITE::sprites.player_Jump.width), static_cast<float>(SPRITE::sprites.player_Jump.height) };
 			currentSprite = SPRITE::sprites.player_Jump;
 			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
-			sourceRect.x = { static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Idle.width / SPRITE::animationTotalFrames) };
+			sourceRect.x = { static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Idle.width / SPRITE::animation_Total_Frames) };
 		}
 		else if (player.speed.x != 0)
 		{
@@ -207,9 +207,9 @@ namespace PLAYER
 			currentSprite = SPRITE::sprites.player_Run;
 			sourceRect =
 			{
-				static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Run.width / (SPRITE::animationTotalFrames + 1)),
+				static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Run.width / (SPRITE::animation_Total_Frames + 1)),
 				0.0f,
-				(player.speed.x > 0 ? 1 : -1) * (static_cast<float>(SPRITE::sprites.player_Run.width) / (SPRITE::animationTotalFrames + 1)),
+				(player.speed.x > 0 ? 1 : -1) * (static_cast<float>(SPRITE::sprites.player_Run.width) / (SPRITE::animation_Total_Frames + 1)),
 				static_cast<float>(SPRITE::sprites.player_Run.height)
 			};
 			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };
@@ -219,9 +219,9 @@ namespace PLAYER
 			// Animación de Idle
 			currentSprite = SPRITE::sprites.player_Idle;
 			sourceRect = {
-				static_cast<float>(player.currentFrame) * (SPRITE::sprites.player_Idle.width / SPRITE::animationTotalFrames),
+				static_cast<float>(player.current_Frame) * (SPRITE::sprites.player_Idle.width / SPRITE::animation_Total_Frames),
 				0.0f,
-				static_cast<float>(SPRITE::sprites.player_Idle.width) / SPRITE::animationTotalFrames,
+				static_cast<float>(SPRITE::sprites.player_Idle.width) / SPRITE::animation_Total_Frames,
 				static_cast<float>(SPRITE::sprites.player_Idle.height)
 			};
 			spriteRaltedPlayerPos = { player.pos.x, player.pos.y };

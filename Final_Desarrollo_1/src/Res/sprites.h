@@ -22,8 +22,8 @@ namespace SPRITE
 	};
 
 	extern Sprites sprites;
-	extern SpriteMovement spritesMovement;
-	extern const int animationTotalFrames;
+	extern SpriteMovement sprites_Movement;
+	extern const int animation_Total_Frames;
 
 	void init();
 	void unload();

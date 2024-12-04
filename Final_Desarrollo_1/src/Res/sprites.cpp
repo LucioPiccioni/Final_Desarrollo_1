@@ -5,10 +5,10 @@
 
 namespace SPRITE
 {
-	const int animationTotalFrames = 11;
+	const int animation_Total_Frames = 11;
 
 	Sprites sprites = {};
-	SpriteMovement spritesMovement = {};
+	SpriteMovement sprites_Movement = {};
 
 	void init()
 	{
@@ -41,10 +41,10 @@ namespace SPRITE
 		delta_Time = delta_Time + 2;
 
 		if (skySpeed > 0)
-			SPRITE::spritesMovement.space -= skySpeed;
+			SPRITE::sprites_Movement.space -= skySpeed;
 
-		if (SPRITE::spritesMovement.space < -PROGRAM_DATA::screen_Height)
-			SPRITE::spritesMovement.space = 0;
+		if (SPRITE::sprites_Movement.space < -PROGRAM_DATA::screen_Height)
+			SPRITE::sprites_Movement.space = 0;
 	}
 
 	void draw_Paralax()
@@ -53,10 +53,10 @@ namespace SPRITE
 
 		Rectangle sourceRec = { 0.0f, 0.0f, static_cast<float>(SPRITE::sprites.space.width), static_cast<float>(SPRITE::sprites.space.height) };
 
-		Rectangle destRec = { 0, SPRITE::spritesMovement.space, PROGRAM_DATA::screen_Width, PROGRAM_DATA::screen_Height };
+		Rectangle destRec = { 0, SPRITE::sprites_Movement.space, PROGRAM_DATA::screen_Width, PROGRAM_DATA::screen_Height };
 		DrawTexturePro(SPRITE::sprites.space, sourceRec, destRec, origin, 0.0f, WHITE);
 
-		destRec = { 0, PROGRAM_DATA::screen_Height + SPRITE::spritesMovement.space, PROGRAM_DATA::screen_Width, PROGRAM_DATA::screen_Height };
+		destRec = { 0, PROGRAM_DATA::screen_Height + SPRITE::sprites_Movement.space, PROGRAM_DATA::screen_Width, PROGRAM_DATA::screen_Height };
 		DrawTexturePro(SPRITE::sprites.space, sourceRec, destRec, origin, 0.0f, WHITE);
 	}
 }

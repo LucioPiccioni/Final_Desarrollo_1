@@ -14,9 +14,9 @@ namespace PLAYER
 		Vector2 pos = {};
 		Vector2 speed = {};
 
-		Rectangle frameRect = {};
-		float currentFrame = 0;
-		float framesCounter = 0;
+		Rectangle frame_Rect = {};
+		float current_Frame = 0;
+		float frames_Counter = 0;
 
 		PLATFORM::Platform* platform_Standing;
 
