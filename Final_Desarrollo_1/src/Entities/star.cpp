@@ -39,10 +39,10 @@ namespace STAR
 	bool isValidPosition(Star newStar, Rectangle actual_Pos, float min_Distance)
 	{
 
-		float dx = newStar.rect.x - (actual_Pos.x + actual_Pos.width / 2);
-		float dy = newStar.rect.y - (actual_Pos.y + actual_Pos.height / 2);
+		float distance_X = newStar.rect.x - (actual_Pos.x + actual_Pos.width / 2);
+		float distance_Y = newStar.rect.y - (actual_Pos.y + actual_Pos.height / 2);
 
-		float distance = sqrt(dx * dx + dy * dy);
+		float distance = sqrt(distance_X * distance_X + distance_Y * distance_Y);
 
 		return distance >= min_Distance;
 	}
